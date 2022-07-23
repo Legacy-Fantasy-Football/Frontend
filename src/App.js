@@ -1,25 +1,46 @@
-import logo from './logo.svg';
-import './App.css';
 
-function App() {
+import './App.css';
+import axios from 'axios';
+import { useEffect, useState } from 'react';
+
+
+
+
+export default function App() {
+
+  const base_url = "http://localhost:8000"
+
+  const [leagues, setLeagues] = useState([])
+
+  function componentDidMount(){
+    console.log("it mounted")
+    let data;
+    axios.get(`${base_url}/wel/`)
+        .then(res => {
+            data = res.data;
+            setLeagues(data)
+        })
+        .catch(err => {})
+  }
+
+  useEffect(()=>{
+    componentDidMount()
+  },[])
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <div>
+            {leagues.map((league, id) =>  (
+            <div key={id}>
+            <div >
+                  <div >
+                        <h1>{league.code} </h1>
+                        <footer >--- by
+                        </footer>
+                  </div>
+            </div>
+            </div>
+            )
+        )}
+      </div>
   );
 }
-
-export default App;
