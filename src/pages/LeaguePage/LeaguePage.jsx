@@ -1,6 +1,7 @@
 /* App.js */
 import React, { Component } from 'react';
 import CanvasJSReact from '../../canvasjs.react';
+import "./LeaguePage.css"
 var CanvasJSChart = CanvasJSReact.CanvasJSChart;
 
 export default class LeaguePage extends Component {	
@@ -54,7 +55,7 @@ export default class LeaguePage extends Component {
         
 		
 		return (
-		<div>
+		<div className='chart'>
 			<CanvasJSChart options = {options} 
 			    onRef={ref => this.chart = ref}
 			/>
