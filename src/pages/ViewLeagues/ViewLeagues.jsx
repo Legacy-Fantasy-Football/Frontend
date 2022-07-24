@@ -127,7 +127,7 @@ export default function App() {
   
             {leagues.map((league, id) =>  (
             <div key={id}>
-            <Link to={`/${league.code}`}>
+            <Link to={`/${league.Espn_League_Id}`}>
               <div className='LeagueCard'>
                     <div >
                           <h1>{league.code} </h1>
