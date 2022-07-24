@@ -1,3 +1,16 @@
+.LeagueCard{
+  border: 2px black solid;
+  width: 50%;
+  text-align: center;
+  margin: 10px;
+}
+.LeagueCard:hover{
+background-color: grey;
+transform: scale(.8);
+}
+
+
+
 .App {
   text-align: center;
 }

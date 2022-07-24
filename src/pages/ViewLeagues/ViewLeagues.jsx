@@ -1,7 +1,8 @@
 
-import './App.css';
+import './ViewLeagues.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
+import { Link } from 'react-router-dom';
 
 
 
@@ -126,13 +127,15 @@ export default function App() {
   
             {leagues.map((league, id) =>  (
             <div key={id}>
-            <div >
-                  <div >
-                        <h1>{league.code} </h1>
-                        <footer >--- by {league.host}
-                        </footer>
-                  </div>
-            </div>
+            <Link to={`/${league.code}`}>
+              <div className='LeagueCard'>
+                    <div >
+                          <h1>{league.code} </h1>
+                          <footer >--- by {league.host}
+                          </footer>
+                    </div>
+              </div>
+            </Link>
             </div>
             )
         )}
