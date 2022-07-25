@@ -2,9 +2,12 @@ import "./LeaguePage.css"
 import { useParams } from "react-router-dom"
 import axios from "axios";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 
 export default function LeaguePage(baseurl){
+
+    let navigate = useNavigate()
 
     let { Espn_League_Id } = useParams();
 
@@ -13,6 +16,7 @@ export default function LeaguePage(baseurl){
 
     const deleteLeague = async () =>{
         await axios.delete(`http://localhost:8000/wel/${id}`)
+        navigate('/')
     }
 
     return(
