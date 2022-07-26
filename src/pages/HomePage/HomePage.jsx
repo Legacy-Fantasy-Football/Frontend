@@ -10,7 +10,9 @@ import { Link } from 'react-router-dom';
 
 
 
-export default function Home() {
+export default function Home(user) {
+
+  console.log(user)
 
   const base_url = "http://localhost:8000"
 
@@ -133,9 +135,8 @@ export default function Home() {
             <Link to={`/${league.Espn_League_Id}`}>
               <div className='LeagueCard'>
                     <div >
-                          <h1>{league.code} </h1>
-                          <footer >--- by {league.host}
-                          </footer>
+                          <h1>{league.host}</h1>
+                          {/* <h4>{league.bigdata['Jordan Freundlich']['2010']}</h4> */}
                     </div>
               </div>
             </Link>

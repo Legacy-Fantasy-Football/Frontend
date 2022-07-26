@@ -4,10 +4,11 @@ import AuthContext from "../context/AuthContext";
 
 export default function Navbar(){
   const { user, logoutUser } = useContext(AuthContext);
+  console.log(user)
   return (
     <nav>
       <div>
-        <h1>App Name</h1>
+        <h1>Legacy Fantasy Football</h1>
         <div>
           {user ? (
             <>

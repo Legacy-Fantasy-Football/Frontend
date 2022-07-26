@@ -2,10 +2,7 @@
 import './ViewLeagues.css';
 import axios from 'axios';
 import { useEffect, useState } from 'react';
-import { Link } from 'react-router-dom';
-
-
-
+import { Link, Navigate } from 'react-router-dom';
 
 export default function App() {
 
@@ -16,7 +13,8 @@ export default function App() {
   const [newLeagueId, setNewLeagueId] = useState("")
   const [newEspn_S2, setNewEspn_S2] = useState("")
   const [newEspn_Swid, setNewEspn_Swid] = useState("")
-  
+
+
   function getLeagues(){
     console.log("it mounted")
     let data;
@@ -128,13 +126,7 @@ export default function App() {
             {leagues.map((league, id) =>  (
             <div key={id}>
             <Link to={`/${league.Espn_League_Id}`}>
-              <div className='LeagueCard'>
-                    <div >
-                          <h1>{league.code} </h1>
-                          <footer >--- by {league.host}
-                          </footer>
-                    </div>
-              </div>
+              <h1>Hello</h1>
             </Link>
             </div>
             )
