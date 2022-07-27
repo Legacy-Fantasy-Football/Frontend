@@ -17,10 +17,14 @@ export default class LeaguePage extends Component {
                 e.dataSeries.visible = true;
             }
             this.chart.render();
-        };
+        }
+
+
     render() {
         const options = {
             theme:"light2",
+            animationEnabled: true,
+            animationDuration: 10000,
             zoomEnabled: true,
             zoomType: "xy",
             title:{
@@ -47,8 +51,6 @@ export default class LeaguePage extends Component {
                 cursor:"pointer",
                 itemclick : this.toggleDataSeries
             },
-            animationEnabled: true,
-            animationDuration: 10000,
             data: this.props.chartData
         }
 

@@ -1,17 +1,17 @@
-import { useContext } from "react";
 import UserInfo from "../../components/Userinfo";
 import AuthContext from "../../context/AuthContext";
 
 // import './ViewLeagues.css';
 import axios from 'axios';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
 
 
 
 
-export default function Home(user) {
+export default function Home() {
 
+  const { user, logoutUser } = useContext(AuthContext);
   console.log(user)
 
   const base_url = "http://localhost:8000"
@@ -21,6 +21,7 @@ export default function Home(user) {
   const [newLeagueId, setNewLeagueId] = useState("")
   const [newEspn_S2, setNewEspn_S2] = useState("")
   const [newEspn_Swid, setNewEspn_Swid] = useState("")
+  const [startYear, SetStartYear] = useState("")
   
   function getLeagues(){
     console.log("it mounted")
@@ -36,6 +37,9 @@ export default function Home(user) {
   function handleHostInput(e){
     setNewHost(e.target.value)
   };
+  function handleStartYearInput(e){
+    SetStartYear(e.target.value)
+  }
   function handleLeagueIdInput(e){
     setNewLeagueId(e.target.value)
   };
@@ -51,12 +55,14 @@ export default function Home(user) {
     //console.log(`newLeagueHost: ${newLeague.host}`)
     axios.post(`${base_url}/wel/`, {
         host: newHost,
+        year_started: startYear,
         Espn_League_Id: newLeagueId,
         Espn_S2: newEspn_S2,
         Espn_Swid: newEspn_Swid
       })
       .then((res) =>{
         setNewHost("")
+        SetStartYear("")
         setNewLeagueId("")
         setNewEspn_S2("")
         setNewEspn_Swid("")
@@ -69,6 +75,8 @@ export default function Home(user) {
   },[])
 
   return (
+    <>
+    {user ? ( 
     <div>
         <form onSubmit={handleSubmit}>
                     <div className="input-group mb-3">
@@ -86,6 +94,21 @@ export default function Home(user) {
                                value={newHost} name="user"
                                onChange={handleHostInput} />
                     </div>
+                    <div className="input-group mb-3">
+                  <div className="input-group-prepend">
+                  <span className="input-group-text"
+                        id="basic-addon1">
+                      Year Your League Started
+                  </span>
+                  </div>
+              <input type="text" className="form-control" 
+                     placeholder="Name of the Host"
+                     aria-label="Username"
+                     aria-describedby="basic-addon1"
+                     value={startYear} name="startyear"
+                     onChange={handleStartYearInput} />
+                  </div>
+
   
                     <div className="input-group mb-3">
                         <div className="input-group-prepend">
@@ -144,5 +167,12 @@ export default function Home(user) {
             )
         )}
       </div>
-  );
+    ) : (
+      <>
+      <Link to="/login">Login</Link>
+      <Link to="/register">Register</Link>
+      </>
+    ) }
+  </>  
+  )
 }
