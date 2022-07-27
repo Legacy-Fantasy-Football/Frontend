@@ -5,16 +5,19 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Chart from "../Chart/Chart"
 import { useState, useEffect } from "react";
+import LegacyPoints from "../../components/LegacyPoints";
 
 
 export default function LeaguePage(baseurl){
 
     let navigate = useNavigate()
     const [chartData, setChartData]= useState([])
+    const [leagueData, setLeagueData] = useState([])
+    
 
-    function getData(){
+    function getWinsChartData(){
         let data
-        axios.get(`http://localhost:8000/wel/${id}`)
+        axios.get(`http://localhost:8000/wins/${id}`)
         .then(res => {
             data = res.data;
             console.log(data.bigdata)
@@ -22,6 +25,18 @@ export default function LeaguePage(baseurl){
         })
         .catch(err => {})
     }
+
+    function getLeagueData(){
+        let data
+        axios.get(`http://localhost:8000/wel/${id}`)
+        .then(res => {
+            data = res.data;
+            //console.log(data)
+            setLeagueData(data.bigdata)
+        })
+        .catch(err => {})
+    }
+
 
     let { Espn_League_Id } = useParams();
 
@@ -33,14 +48,28 @@ export default function LeaguePage(baseurl){
         navigate('/')
     }
 
+    // for (const key in leagueData.bigdata) {
+    //         const obj = {
+    //             owner: key,
+    //             legacypoints: leagueData.bigdata[key].legacypoints
+    //         }
+    //         console.log(`${key}: ${leagueData.bigdata[key].legacypoints}`);
+    //         LegacyPoints.push(obj)
+    // }
+
+
+
+
+
     useEffect(()=>{
-        getData()
+        getWinsChartData()
+        getLeagueData()
       },[])
     
-
     return(
         <>
         <Chart chartData={chartData}></Chart>
+        <LegacyPoints leagueData={leagueData}></LegacyPoints>
         <h1>{Espn_League_Id}</h1>
         <Link to={`/${id}/edit`}>
         <button>

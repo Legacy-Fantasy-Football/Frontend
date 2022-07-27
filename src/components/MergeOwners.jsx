@@ -1,9 +1,14 @@
 import { useState } from "react"
+import axios from "axios"
+import { useParams } from "react-router-dom"
 
 export default function MergeOwners(){
     const [owner1, setowner1] = useState("")
     const [owner2, setowner2] = useState("")
     const [years, setyears] = useState("")
+
+    let { Espn_League_Id } = useParams();
+    const id = Espn_League_Id
 
     function handleowner1Input(e){
         setowner1(e.target.value)
@@ -17,11 +22,17 @@ export default function MergeOwners(){
 
     function handleSubmit(e){
         e.preventDefault()
-        console.log({
+        axios.put(`http://localhost:8000/wel/${id}/merge`, {
             owner1: owner1,
             owner2: owner2,
             years: years
-        })
+          })
+          .then((res) =>{
+            setowner1("")
+            setowner2("")
+            setyears("")
+          })
+          .catch((err) =>{})
     }
 
     return(

@@ -18,7 +18,7 @@ export default class LeaguePage extends Component {
             }
             this.chart.render();
         }
-
+        
 
     render() {
         const options = {
