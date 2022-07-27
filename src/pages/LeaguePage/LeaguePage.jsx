@@ -47,6 +47,11 @@ export default function LeaguePage(baseurl){
             Edit
         </button>
         </Link>
+        <Link to={`/${id}/merge`}>
+        <button>
+            Merge Owners
+        </button>
+        </Link>
         <button onClick={deleteLeague}>
             Delete
         </button>
