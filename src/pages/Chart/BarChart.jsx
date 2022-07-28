@@ -9,9 +9,17 @@ export default class BarChart extends Component {
     }
 	render() {
 		const options = {
+            theme:"light2",
+            animationEnabled: true,
+            animationDuration: 10000,
+            zoomEnabled: true,
+            zoomType: "xy",
 			title: {
-				text: "Basic Column Chart"
+				text: "Total Points"
 			},
+            axisX:{
+                interval: 1,
+              },
 			data: [
 			{
 				// Change type to "doughnut", "line", "splineArea", etc.

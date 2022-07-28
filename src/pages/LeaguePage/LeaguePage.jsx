@@ -16,6 +16,7 @@ export default function LeaguePage(baseurl){
     const [chartData, setChartData]= useState([])
     const [barChartData, setBarChartData] = useState([])
     const [leagueData, setLeagueData] = useState([])
+    const [leagueName, setLeagueName] = useState("")
     console.log(leagueData)
 
     function getWinsChartData(){
@@ -23,7 +24,7 @@ export default function LeaguePage(baseurl){
         axios.get(`http://localhost:8000/wins/${id}`)
         .then(res => {
             data = res.data;
-            console.log(data.bigdata)
+            // console.log(data)
             setChartData(data.bigdata)
         })
         .catch(err => {})
@@ -46,7 +47,8 @@ export default function LeaguePage(baseurl){
         axios.get(`http://localhost:8000/wel/${id}`)
         .then(res => {
             data = res.data;
-            //console.log(data)
+            console.log(data)
+            setLeagueName(data.host)
             setLeagueData(data.bigdata)
         })
         .catch(err => {})
@@ -86,8 +88,9 @@ export default function LeaguePage(baseurl){
     
     return(
         <>
-        <Chart chartData={chartData}></Chart>
-        <BarChart barChartData={barChartData}></BarChart>
+        <h1>{leagueName}</h1>
+        <Chart chartData={chartData} leagueName={leagueName}></Chart>
+        <BarChart barChartData={barChartData} leagueName={leagueName}></BarChart>
         <LegacyPoints leagueData={leagueData}></LegacyPoints>
         <TrophyRoom leagueData={leagueData}></TrophyRoom>
         <h1>{Espn_League_Id}</h1>

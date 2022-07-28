@@ -27,7 +27,7 @@ export default class LeaguePage extends Component {
             zoomEnabled: true,
             zoomType: "xy",
             title:{
-                text: "JPFL Wins"
+                text: "Total Wins"
             },
             axisY :{
                 title: "Number of Wins",
