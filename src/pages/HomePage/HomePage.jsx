@@ -12,7 +12,7 @@ import { Link } from 'react-router-dom';
 export default function Home() {
 
   const { user, logoutUser } = useContext(AuthContext);
-  console.log(user)
+  console.log(user.user_id)
 
   const base_url = "http://localhost:8000"
 
@@ -54,6 +54,7 @@ export default function Home() {
     e.preventDefault();
     //console.log(`newLeagueHost: ${newLeague.host}`)
     axios.post(`${base_url}/wel/`, {
+        user: user.user_id,
         host: newHost,
         year_started: startYear,
         Espn_League_Id: newLeagueId,
@@ -154,18 +155,24 @@ export default function Home() {
                 </form>
   
             {leagues.map((league, id) =>  (
-            <div key={id}>
-            <Link to={`/${league.Espn_League_Id}`}>
-              <div className='LeagueCard'>
-                    <div >
-                          <h1>{league.host}</h1>
-                          {/* <h4>{league.bigdata['Jordan Freundlich']['2010']}</h4> */}
+              // user.user_id === league.user ? (
+                <div key={id}>
+                  <Link to={`/${league.Espn_League_Id}`}>
+                    <div className='LeagueCard'>
+                        <div >
+                            <h1>{league.host}</h1>
+                            <h1>{league.user}</h1>
+                            {/* <h4>{league.bigdata['Jordan Freundlich']['2010']}</h4> */}
+                        </div>
                     </div>
-              </div>
-            </Link>
-            </div>
-            )
-        )}
+                  </Link>
+                </div>
+               ) 
+              // :
+            //   <></>
+            // )
+          )
+        }
       </div>
     ) : (
       <>

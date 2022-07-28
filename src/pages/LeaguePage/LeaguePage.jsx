@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Chart from "../Chart/Chart"
 import { useState, useEffect } from "react";
 import LegacyPoints from "../../components/LegacyPoints";
+import TrophyRoom from "../../components/trophyroom";
 
 
 export default function LeaguePage(baseurl){
@@ -13,7 +14,7 @@ export default function LeaguePage(baseurl){
     let navigate = useNavigate()
     const [chartData, setChartData]= useState([])
     const [leagueData, setLeagueData] = useState([])
-    
+    console.log(leagueData)
 
     function getWinsChartData(){
         let data
@@ -70,6 +71,7 @@ export default function LeaguePage(baseurl){
         <>
         <Chart chartData={chartData}></Chart>
         <LegacyPoints leagueData={leagueData}></LegacyPoints>
+        <TrophyRoom leagueData={leagueData}></TrophyRoom>
         <h1>{Espn_League_Id}</h1>
         <Link to={`/${id}/edit`}>
         <button>
