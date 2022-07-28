@@ -1,10 +1,12 @@
 import { useEffect, useState } from "react";
 
-export default function TrophyRoom({ leagueData }) {
+export default function TrophyRoom({ leagueData}) {
   console.log(leagueData);
   const [owners, setOwners] = useState([])
 
   const OwnersArr = [];
+
+  let sortedOwners = []
 
   for (const key in leagueData) {
     const obj = {
@@ -17,16 +19,14 @@ export default function TrophyRoom({ leagueData }) {
     OwnersArr.push(obj);
   }
 
-  let sortedOwners = OwnersArr.sort(
+  sortedOwners = OwnersArr.sort(
     ({ years: a }, { years: b }) => b - a
   );
-
-  console.log(sortedOwners)
   
   function sortByYear(){
     console.log("i was clicked")
     sortedOwners = OwnersArr.sort(
-      ({ year: a }, { year: b }) => b - a
+      ({ years: a }, { years: b }) => b - a
     );
     setOwners(sortedOwners)
   }
@@ -61,6 +61,7 @@ export default function TrophyRoom({ leagueData }) {
       <h1>Trophy Room</h1>
 
       <table>
+        <thead>
         <tr>
           <th>Owner</th>
           <th onClick={sortByYear}>Years Played</th>
@@ -68,15 +69,30 @@ export default function TrophyRoom({ leagueData }) {
           <th onClick={sortByFinals}>Finals</th>
           <th onClick={sortByChamps}>Champs</th>
         </tr>
-      {owners.map((owner, id) => (
-        <tr>
-          <td>{owner.owner}</td>
-          <td>{owner.years}</td>
-          <td>{owner.playoffs}</td>
-          <td>{owner.finals}</td>
-          <td>{owner.champ}</td>
-        </tr>
-      ))}
+        </thead>
+        <tbody>
+          
+          {owners[0]? (
+            owners.map((owner, id) => (
+              <tr>
+                <td>{owner.owner}</td>
+                <td>{owner.years}</td>
+                <td>{owner.playoffs}</td>
+                <td>{owner.finals}</td>
+                <td>{owner.champ}</td>
+              </tr>
+            ))):
+            sortedOwners.map((owner, id) => (
+              <tr>
+                <td>{owner.owner}</td>
+                <td>{owner.years}</td>
+                <td>{owner.playoffs}</td>
+                <td>{owner.finals}</td>
+                <td>{owner.champ}</td>
+              </tr>
+            ))
+          }
+        </tbody>
       </table>
     </>
   );

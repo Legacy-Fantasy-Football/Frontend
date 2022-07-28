@@ -19,7 +19,6 @@ export default class LeaguePage extends Component {
             this.chart.render();
         }
         
-
     render() {
         const options = {
             theme:"light2",
@@ -54,6 +53,7 @@ export default class LeaguePage extends Component {
             data: this.props.chartData
         }
 
+        console.log(options)
         
 		
 		return (

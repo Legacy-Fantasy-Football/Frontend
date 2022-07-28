@@ -4,15 +4,17 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Chart from "../Chart/Chart"
+import BarChart from "../Chart/BarChart"
 import { useState, useEffect } from "react";
 import LegacyPoints from "../../components/LegacyPoints";
-import TrophyRoom from "../../components/trophyroom";
+import TrophyRoom from "../../components/TrophyRoom";
 
 
 export default function LeaguePage(baseurl){
 
     let navigate = useNavigate()
     const [chartData, setChartData]= useState([])
+    const [barChartData, setBarChartData] = useState([])
     const [leagueData, setLeagueData] = useState([])
     console.log(leagueData)
 
@@ -26,6 +28,18 @@ export default function LeaguePage(baseurl){
         })
         .catch(err => {})
     }
+    function getPointsChartData(){
+        let data
+        axios.get(`http://localhost:8000/points/${id}`)
+        .then(res => {
+            data = res.data;
+            console.log(data.bigdata)
+            setBarChartData(data.bigdata)
+        })
+        .catch(err => {})
+    }
+
+    console.log(barChartData)
 
     function getLeagueData(){
         let data
@@ -37,6 +51,8 @@ export default function LeaguePage(baseurl){
         })
         .catch(err => {})
     }
+
+    console.log(leagueData)
 
 
     let { Espn_League_Id } = useParams();
@@ -65,11 +81,13 @@ export default function LeaguePage(baseurl){
     useEffect(()=>{
         getWinsChartData()
         getLeagueData()
+        getPointsChartData()
       },[])
     
     return(
         <>
         <Chart chartData={chartData}></Chart>
+        <BarChart barChartData={barChartData}></BarChart>
         <LegacyPoints leagueData={leagueData}></LegacyPoints>
         <TrophyRoom leagueData={leagueData}></TrophyRoom>
         <h1>{Espn_League_Id}</h1>

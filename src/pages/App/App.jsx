@@ -16,6 +16,7 @@ import ProtectedPage from "../ProtectedPage/ProtectedPage"
 import { useState } from "react"
 import jwt_decode from "jwt-decode";
 import Chart from "../Chart/Chart"
+import BarChart from "../Chart/BarChart"
 import MergeOwners from "../../components/MergeOwners"
 
 export default function App(){
@@ -37,6 +38,7 @@ export default function App(){
             <Route path="/:Espn_League_Id/edit" element={<EditLeaguePage base_url={base_url}/>}></Route>
             <Route path="/:Espn_League_Id/merge" element={<MergeOwners base_url={base_url}/>}></Route>
             <Route path="/chart" element={<Chart/>}></Route>
+            <Route path="/BarChart" element={<BarChart/>}></Route>
           </Routes>
         </AuthProvider>
         <Footer />
