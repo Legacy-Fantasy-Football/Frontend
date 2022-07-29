@@ -9,7 +9,7 @@ export default function CreateLeague({displaySpinner, handleSubmit, handleHostIn
     <Form onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="leagueName">
         <Form.Label>League Name</Form.Label>
-        <Form.Control type="text" placeholder="Enter League Name" value={newHost}
+        <Form.Control type="text" placeholder="" value={newHost}
         onChange={handleHostInput} required/>
       </Form.Group>
       <Form.Group className="mb-3" controlId="LeagueID">

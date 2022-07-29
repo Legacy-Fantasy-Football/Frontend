@@ -30,6 +30,7 @@ export default function Home() {
   const [newEspn_Swid, setNewEspn_Swid] = useState("")
   const [startYear, SetStartYear] = useState("")
   const [create, setCreate] = useState()
+  const [search, setSearch] = useState("")
   
   function getLeagues(){
     console.log("it mounted")
@@ -76,6 +77,19 @@ export default function Home() {
       .catch((err) =>{})
   }
 
+  function setCreateFunc(){
+    setCreate(true)
+  }
+
+  function handlesearch(e){
+    setSearch(e.target.value)
+  }
+
+  function goToLeague(e){
+    e.preventDefault()
+    Navigate(`/${search}`)
+  }
+
   useEffect(()=>{
     getLeagues()
   },[])
@@ -93,16 +107,15 @@ export default function Home() {
       
       <div className="d-grid createorfind gap-2">
         <div className="row">
-        <Form className="Form">
+        <Form onSubmit={goToLeague} className="Form">
           <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Label>Search for a league</Form.Label>
-          <Form.Control className="Search" type="email" placeholder="Enter your Espn league id" />
+          <Form.Control className="Search" type="number" placeholder="Enter your Espn league id" onChange={handlesearch} value={search}/>
         </Form.Group>
-        <Button variant="primary" size="lg">
+        <Button type="submit" variant="primary" size="lg">
         Search for League
         </Button>
         </Form>
-        <Button className="large-btn" variant="primary" size="lg">
+        <Button onClick={setCreateFunc} className="large-btn" variant="primary" size="lg">
             Create League
         </Button>
         </div>
