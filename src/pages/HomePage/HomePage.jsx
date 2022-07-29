@@ -1,10 +1,15 @@
 import UserInfo from "../../components/Userinfo";
 import AuthContext from "../../context/AuthContext";
+import "./HomePage.css"
 
 // import './ViewLeagues.css';
 import axios from 'axios';
 import { useEffect, useState, useContext } from 'react';
 import { Link } from 'react-router-dom';
+import CreateLeague from "../../components/CreateLeague/CreateLeague";
+import { useNavigate } from "react-router-dom";
+import Button from 'react-bootstrap/Button';
+import Form from "react-bootstrap/Form";
 
 
 
@@ -12,16 +17,19 @@ import { Link } from 'react-router-dom';
 export default function Home() {
 
   const { user, logoutUser } = useContext(AuthContext);
-  console.log(user.user_id)
+  const [displaySpinner, setDisplaySpinner] = useState("false")
+  // console.log(user.user_id)
+  let Navigate = useNavigate()
 
   const base_url = "http://localhost:8000"
 
-  const [leagues, setLeagues] = useState([])
+  const [leagues, setLeagues] = useState(false)
   const [newHost, setNewHost] = useState("")
   const [newLeagueId, setNewLeagueId] = useState("")
   const [newEspn_S2, setNewEspn_S2] = useState("")
   const [newEspn_Swid, setNewEspn_Swid] = useState("")
   const [startYear, SetStartYear] = useState("")
+  const [create, setCreate] = useState()
   
   function getLeagues(){
     console.log("it mounted")
@@ -51,6 +59,7 @@ export default function Home() {
   };
 
   function handleSubmit(e){
+    setDisplaySpinner("true")
     e.preventDefault();
     //console.log(`newLeagueHost: ${newLeague.host}`)
     axios.post(`${base_url}/wel/`, {
@@ -62,11 +71,7 @@ export default function Home() {
         Espn_Swid: newEspn_Swid
       })
       .then((res) =>{
-        setNewHost("")
-        SetStartYear("")
-        setNewLeagueId("")
-        setNewEspn_S2("")
-        setNewEspn_Swid("")
+        Navigate(`/${newLeagueId}`)
       })
       .catch((err) =>{})
   }
@@ -76,109 +81,36 @@ export default function Home() {
   },[])
 
   return (
-    <>
-    {user ? ( 
-    <div>
-        <form onSubmit={handleSubmit}>
-                    <div className="input-group mb-3">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text"
-                                  id="basic-addon1">
-                                League Name
-                            </span>
-                        </div>
-                        <input type="text" className="form-control" 
-                               placeholder="Name of the Host"
-                               aria-label="Username"
-                               aria-describedby="basic-addon1"
-                               value={newHost} name="user"
-                               onChange={handleHostInput} />
-                    </div>
-                    <div className="input-group mb-3">
-                  <div className="input-group-prepend">
-                  <span className="input-group-text"
-                        id="basic-addon1">
-                      Year Your League Started
-                  </span>
-                  </div>
-              <input type="text" className="form-control" 
-                     placeholder="Name of the Host"
-                     aria-label="Username"
-                     aria-describedby="basic-addon1"
-                     value={startYear} name="startyear"
-                     onChange={handleStartYearInput} />
-                  </div>
+    <div className="center">
+    {create ? ( 
 
-  
-                    <div className="input-group mb-3">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text">
-                               Your League Id
-                            </span>
-                        </div>
-                        <input className="form-control " 
-                                  placeholder="What is your league Id?" 
-                                  value={newLeagueId} name="Espn_League_Id" 
-                                  onChange={handleLeagueIdInput}>
-                        </input>
-                    </div>
-                    <div className="input-group mb-3">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text">
-                               Your Espn_S2
-                            </span>
-                        </div>
-                        <textarea className="form-control "
-                                aria-label="With textarea" 
-                                  placeholder="What is your Espn_S2?" 
-                                  value={newEspn_S2} name="Espn_S2" 
-                                  onChange={handleEspn_S2Input}>
-                        </textarea>
-                    </div>
-                    <div className="input-group mb-3">
-                        <div className="input-group-prepend">
-                            <span className="input-group-text">
-                               Your Espn_SWID
-                            </span>
-                        </div>
-                        <input className="form-control " 
-                                  placeholder="What is your Espn SWID?" 
-                                  value={newEspn_Swid} name="Espn_Swid" 
-                                  onChange={handleEspn_SwidInput}>
-                        </input>
-                    </div>
-  
-                    <button type="submit" className="btn btn-primary mb-5">
-                        Submit
-                    </button>
-                </form>
-  
-            {leagues.map((league, id) =>  (
-              // user.user_id === league.user ? (
-                <div key={id}>
-                  <Link to={`/${league.Espn_League_Id}`}>
-                    <div className='LeagueCard'>
-                        <div >
-                            <h1>{league.host}</h1>
-                            <h1>{league.user}</h1>
-                            {/* <h4>{league.bigdata['Jordan Freundlich']['2010']}</h4> */}
-                        </div>
-                    </div>
-                  </Link>
-                </div>
-               ) 
-              // :
-            //   <></>
-            // )
-          )
-        }
-      </div>
+
+
+    <div>
+      <CreateLeague displaySpinner={displaySpinner} handleSubmit={handleSubmit} handleHostInput={handleHostInput} newHost={newHost} startYear={startYear} handleStartYearInput={handleStartYearInput} newLeagueId={newLeagueId} handleLeagueIdInput={handleLeagueIdInput} newEspn_S2={newEspn_S2} handleEspn_S2Input={handleEspn_S2Input} newEspn_Swid={newEspn_Swid} handleEspn_SwidInput={handleEspn_SwidInput} ></CreateLeague>
+    </div>
     ) : (
-      <>
-      <Link to="/login">Login</Link>
-      <Link to="/register">Register</Link>
-      </>
+      
+      <div className="d-grid createorfind gap-2">
+        <div className="row">
+        <Form className="Form">
+          <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Search for a league</Form.Label>
+          <Form.Control className="Search" type="email" placeholder="Enter your Espn league id" />
+        </Form.Group>
+        <Button variant="primary" size="lg">
+        Search for League
+        </Button>
+        </Form>
+        <Button className="large-btn" variant="primary" size="lg">
+            Create League
+        </Button>
+        </div>
+      </div>
+      
+      
+    
     ) }
-  </>  
+  </div>  
   )
 }

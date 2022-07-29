@@ -3,7 +3,7 @@ import ViewLeagues from "../ViewLeagues/ViewLeagues"
 import LeaguePage from "../LeaguePage/LeaguePage"
 import EditLeaguePage from "../EditLeaguePage/EditLeaguePage"
 import Footer from "../../components/Footer"
-import Navbar from "../../components/Navbar";
+import NavbarComp from "../../components/Navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "../../context/AuthContext";
 import Home from "../HomePage/HomePage";
@@ -18,6 +18,7 @@ import jwt_decode from "jwt-decode";
 import Chart from "../Chart/Chart"
 import BarChart from "../Chart/BarChart"
 import MergeOwners from "../../components/MergeOwners"
+import CreateLeague from "../../components/CreateLeague/CreateLeague"
 
 export default function App(){
 
@@ -29,7 +30,7 @@ export default function App(){
         <div className="flex flex-col min-h-screen overflow-hidden">
         <AuthProvider>
           
-          <Navbar />
+          <NavbarComp />
           <Routes>
             <Route element={<Login/>} path="/login" />
             <Route element={<Register/>} path="/register" />
@@ -39,6 +40,8 @@ export default function App(){
             <Route path="/:Espn_League_Id/merge" element={<MergeOwners base_url={base_url}/>}></Route>
             <Route path="/chart" element={<Chart/>}></Route>
             <Route path="/BarChart" element={<BarChart/>}></Route>
+            <Route path="/createLeague" element={<CreateLeague/>}></Route>
+            
           </Routes>
         </AuthProvider>
         <Footer />

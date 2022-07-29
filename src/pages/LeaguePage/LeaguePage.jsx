@@ -89,7 +89,7 @@ export default function LeaguePage(baseurl){
       },[])
     
     return(
-        <>
+        <div className="container">
         <h1>{leagueName}</h1>
         <Chart chartData={chartData} leagueName={leagueName}></Chart>
         <BarChart barChartData={barChartData} leagueName={leagueName}></BarChart>
@@ -110,6 +110,6 @@ export default function LeaguePage(baseurl){
         <button onClick={deleteLeague}>
             Delete
         </button>
-        </>
+        </div>
     )
 }

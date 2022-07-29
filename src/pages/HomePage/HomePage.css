@@ -1,0 +1,33 @@
+.center{
+    display: flex;
+    justify-content: center;
+    height: 80vh;
+    align-items: center;
+}
+
+.row{
+    display: flex;
+    flex-direction: row;
+}
+
+.createorfind{
+    width: 60vw;
+    text-align: center;
+}
+
+.Search{
+    height: 15vh;
+    font-size: 30px;
+}
+
+.Search::placeholder {
+    font-size: 30px;
+}
+
+.Search::value{
+    font-size: 52px;
+}
+
+.Form{
+    margin-bottom: 5vh;
+}
