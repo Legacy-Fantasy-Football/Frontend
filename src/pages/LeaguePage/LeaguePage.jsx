@@ -8,6 +8,7 @@ import BarChart from "../Chart/BarChart"
 import { useState, useEffect } from "react";
 import LegacyPoints from "../../components/LegacyPoints";
 import TrophyRoom from "../../components/TrophyRoom";
+import Standings from "../../components/Standings";
 
 
 export default function LeaguePage(baseurl){
@@ -17,6 +18,7 @@ export default function LeaguePage(baseurl){
     const [barChartData, setBarChartData] = useState([])
     const [leagueData, setLeagueData] = useState([])
     const [leagueName, setLeagueName] = useState("")
+    const [standings, setStandings] = useState([])
     console.log(leagueData)
 
     function getWinsChartData(){
@@ -47,7 +49,7 @@ export default function LeaguePage(baseurl){
         axios.get(`http://localhost:8000/wel/${id}`)
         .then(res => {
             data = res.data;
-            console.log(data)
+            setStandings(data.standings)
             setLeagueName(data.host)
             setLeagueData(data.bigdata)
         })
@@ -93,6 +95,7 @@ export default function LeaguePage(baseurl){
         <BarChart barChartData={barChartData} leagueName={leagueName}></BarChart>
         <LegacyPoints leagueData={leagueData}></LegacyPoints>
         <TrophyRoom leagueData={leagueData}></TrophyRoom>
+        <Standings standings={standings}></Standings>
         <h1>{Espn_League_Id}</h1>
         <Link to={`/${id}/edit`}>
         <button>

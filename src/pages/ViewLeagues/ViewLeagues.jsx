@@ -10,7 +10,7 @@ export default function App() {
 
   const base_url = "http://localhost:8000"
   const { user, logoutUser } = useContext(AuthContext);
-
+  
   const [leagues, setLeagues] = useState([])
   const [newHost, setNewHost] = useState("")
   const [newLeagueId, setNewLeagueId] = useState("")
@@ -52,6 +52,7 @@ export default function App() {
     e.preventDefault();
     //console.log(`newLeagueHost: ${newLeague.host}`)
     axios.post(`${base_url}/wel/`, {
+        user: JSON.stringify(user.user_id),
         host: newHost,
         year_started: startYear,
         Espn_League_Id: newLeagueId,
