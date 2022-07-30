@@ -24,6 +24,8 @@ export default function Home() {
   const base_url = "http://localhost:8000"
 
   const [leagues, setLeagues] = useState(false)
+  const [allLeagues, setAllLeagues] = useState([])
+  const [myLeagues, setMyLeagues] = useState([])
   const [newHost, setNewHost] = useState("")
   const [newLeagueId, setNewLeagueId] = useState("")
   const [newEspn_S2, setNewEspn_S2] = useState("")
@@ -90,8 +92,22 @@ export default function Home() {
     Navigate(`/${search}`)
   }
 
+
+  function getallleagues(){
+    let data
+    axios.get(`http://localhost:8000/leagues`)
+    .then(res => {
+        data = res.data;
+        setAllLeagues(data)
+        // console.log(`all leagues: ${data}`)
+    })
+    .catch(err => {})
+  }
+
+
   useEffect(()=>{
     getLeagues()
+    getallleagues()
   },[])
 
   return (
@@ -104,7 +120,7 @@ export default function Home() {
       <CreateLeague setCreate={setCreate} displaySpinner={displaySpinner} handleSubmit={handleSubmit} handleHostInput={handleHostInput} newHost={newHost} startYear={startYear} handleStartYearInput={handleStartYearInput} newLeagueId={newLeagueId} handleLeagueIdInput={handleLeagueIdInput} newEspn_S2={newEspn_S2} handleEspn_S2Input={handleEspn_S2Input} newEspn_Swid={newEspn_Swid} handleEspn_SwidInput={handleEspn_SwidInput} ></CreateLeague>
     </div>
     ) : (
-      
+      <div className="home">
       <div className="d-grid createorfind gap-2">
         <div className="row">
         <Form onSubmit={goToLeague} className="Form">
@@ -120,7 +136,20 @@ export default function Home() {
         </Button>
         </div>
       </div>
-      
+
+      <div className="MyLeagues">My Leagues</div>
+      <div>
+      {allLeagues.map((item)=>(
+        user.user_id === item[1]?(
+          <>
+          <Link className="MyLeagueLinks" to={`${item[2]}`}>{item[2]}</Link>
+          <br></br>
+          </>
+        ):
+        <></>
+      ))}
+      </div>
+      </div>
       
     
     ) }

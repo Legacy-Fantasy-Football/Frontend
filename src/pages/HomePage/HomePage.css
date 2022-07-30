@@ -6,9 +6,24 @@
     overflow:scroll;
 }
 
+.MyLeagueLinks{
+    text-decoration: none;
+    color: black
+}
+
 .row{
     display: flex;
     flex-direction: row;
+}
+
+.home{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.MyLeagues{
+    margin-top: 2vh;
 }
 
 .createorfind{

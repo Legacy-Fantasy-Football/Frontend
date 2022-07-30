@@ -7,7 +7,7 @@ export default function LegacyPoints({leagueData}){
     for (const key in leagueData) {
             const obj = {
                 owner: key,
-                legacypoints: leagueData[key].legacypoints
+                legacypoints: leagueData[key].legacypoints.toFixed(2)
             }
             console.log(`${key}: ${leagueData[key].legacypoints}`);
             LegacyPoints.push(obj)
@@ -20,9 +20,27 @@ export default function LegacyPoints({leagueData}){
     return(
         <>
         <h1>Legacy Points</h1>
+        <table>
+            <thead>
+            <tr>
+                <th>Owner</th>
+                <th>Legacy Points</th>
+            </tr>
+            </thead>
+        
+        <tbody>
         {sortedLegacyPoints.map((owner,id) =>(
-            <div>{owner.owner}: {owner.legacypoints}</div>
+            <tr>
+                <td>
+                    {owner.owner}
+                </td>
+                <td>
+                    {owner.legacypoints}
+                </td>
+            </tr>
         ))}
+        </tbody>
+        </table>
         </>
     )
 }

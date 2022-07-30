@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 import Chart from "../Chart/Chart"
 import BarChart from "../Chart/BarChart"
 import { useState, useEffect } from "react";
-import LegacyPoints from "../../components/LegacyPoints";
+import LegacyPoints from "../../components/LegacyPoints/LegacyPoints";
 import TrophyRoom from "../../components/TrophyRoom";
 import Standings from "../../components/Standings";
 import Row from 'react-bootstrap/Row';
