@@ -14,9 +14,6 @@ import Col from 'react-bootstrap/Col';
 import Button from "react-bootstrap/Button";
 import AuthContext from "../../context/AuthContext";
 
-
-
-
 export default function LeaguePage({base_url}){
 
     let navigate = useNavigate()

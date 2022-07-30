@@ -11289,3 +11289,7 @@ body.sidebar-toggled footer.sticky-footer {
   height: 430px;
   overflow: scroll
 }
+
+.button-cont{
+  align-items: center;
+}

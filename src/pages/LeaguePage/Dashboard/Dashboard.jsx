@@ -16,11 +16,7 @@ import AuthContext from "../../../context/AuthContext";
 import NavbarComp from "../../../components/Navbar/Navbar";
 
 
-
-
-
-
-export default function LeaguePage({base_url}){
+export default function Dashboard({base_url}){
 
     let navigate = useNavigate()
     const [chartData, setChartData]= useState([])
@@ -228,11 +224,9 @@ export default function LeaguePage({base_url}){
 
                     {/* <!-- Page Heading --> */}
                     <div className="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 className="h3 mb-0 text-gray-800">Dashboard</h1>
-                        <a href="#" className="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm"><i
-                                className="fas fa-download fa-sm text-white-50"></i> Generate Report</a>
+                        <h1 className="pt-3 h3 mb-0 text-gray-800">{leagueName}</h1>
                     </div>
-                    <Row>
+                    <Row className="align-items-center">
                     {/* <!-- Earnings (Monthly) Card Example --> */}
                         <div className="col-xl-3 col-md-6 mb-4">
                             
@@ -267,6 +261,9 @@ export default function LeaguePage({base_url}){
                                     </div>
                                 </div>
                             </div>
+                        </div>
+                        <div className="col-xl-3 col-md-6 mb-4 ">
+                                <Button onClick={addToMyleagues}>Add to My Leagues</Button>
                         </div>
                     </Row>
                     <Row>
