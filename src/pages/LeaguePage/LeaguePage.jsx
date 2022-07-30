@@ -5,15 +5,19 @@ import { Link } from "react-router-dom";
 import { useNavigate } from "react-router-dom";
 import Chart from "../Chart/Chart"
 import BarChart from "../Chart/BarChart"
-import { useState, useEffect } from "react";
+import { useState, useEffect, useContext } from "react";
 import LegacyPoints from "../../components/LegacyPoints/LegacyPoints";
 import TrophyRoom from "../../components/TrophyRoom";
 import Standings from "../../components/Standings";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
+import Button from "react-bootstrap/Button";
+import AuthContext from "../../context/AuthContext";
 
 
-export default function LeaguePage(baseurl){
+
+
+export default function LeaguePage({base_url}){
 
     let navigate = useNavigate()
     const [chartData, setChartData]= useState([])
@@ -21,7 +25,11 @@ export default function LeaguePage(baseurl){
     const [leagueData, setLeagueData] = useState([])
     const [leagueName, setLeagueName] = useState("")
     const [standings, setStandings] = useState([])
+    const { user, logoutUser } = useContext(AuthContext);
     console.log(leagueData)
+    let { Espn_League_Id } = useParams();
+    const id = Espn_League_Id
+    console.log(id)
 
     function getWinsChartData(){
         let data
@@ -44,11 +52,21 @@ export default function LeaguePage(baseurl){
         .catch(err => {})
     }
 
+    function addToMyleagues(){
+        axios.post(`${base_url}/leagues/`, {
+            user: user.user_id,
+            league: id
+          })
+          .then((res) =>{
+          })
+          .catch((err) =>{})
+    }
+
     console.log(barChartData)
 
     function getLeagueData(){
         let data
-        axios.get(`http://localhost:8000/wel/${id}`)
+        axios.get(`${base_url}/wel/${id}`)
         .then(res => {
             data = res.data;
             setStandings(data.standings)
@@ -61,13 +79,8 @@ export default function LeaguePage(baseurl){
     console.log(leagueData)
 
 
-    let { Espn_League_Id } = useParams();
-
-    const id = Espn_League_Id
-    console.log(id)
-
     const deleteLeague = async () =>{
-        await axios.delete(`http://localhost:8000/wel/${id}`)
+        await axios.delete(`${base_url}/wel/${id}`)
         navigate('/')
     }
 
@@ -89,6 +102,7 @@ export default function LeaguePage(baseurl){
     return(
         <div className="container">
         <h1>{leagueName}</h1>
+        <Button onClick={addToMyleagues}>Add to My Leagues</Button>
         <div className="component-cont">
         <Row>
         <Col className="component" sm={12} md={6}>

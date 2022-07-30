@@ -14,14 +14,13 @@ import Form from "react-bootstrap/Form";
 
 
 
-export default function Home() {
+export default function Home({base_url}) {
 
   const { user, logoutUser } = useContext(AuthContext);
   const [displaySpinner, setDisplaySpinner] = useState("false")
   // console.log(user.user_id)
   let Navigate = useNavigate()
 
-  const base_url = "http://localhost:8000"
 
   const [leagues, setLeagues] = useState(false)
   const [allLeagues, setAllLeagues] = useState([])
