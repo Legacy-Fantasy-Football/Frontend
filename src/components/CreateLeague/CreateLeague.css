@@ -1,10 +1,44 @@
 Form{
-    width: 40vw
+    width: 40vw;
+    margin-top: 0;
 }
+
+
+
+.input:active{
+    color: black;
+    background-color: white;
+    border-color: var(--dark);
+    outline: 0;
+  }
+.input:focus{
+    color: black;
+    background-color: white;
+    border-color: var(--dark);
+    outline: 0;
+  }
 
 .center{
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 80vh;
+    height: 90vh;
+    padding-top: 0;
 }
+
+.btn{
+    background-color: var(--ligh);
+    border-color: black;
+    color: black
+}
+
+.btn:hover{
+    background-color: white;
+    color: black;
+    border-color: var(--light)
+}
+
+.back-btn{
+    margin-top: 10vh;
+}
+

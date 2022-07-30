@@ -1,8 +1,9 @@
 .center{
     display: flex;
     justify-content: center;
-    height: 80vh;
+    height: 70vh;
     align-items: center;
+    overflow:scroll;
 }
 
 .row{
@@ -31,3 +32,28 @@
 .Form{
     margin-bottom: 5vh;
 }
+
+
+
+@media (max-width: 600px) { 
+    .Search{
+        font-size: 20px;
+        height: 10vh;
+        text-align: center;
+    }
+
+    .Search::placeholder {
+        font-size: 20px;
+        overflow-wrap: break-word;
+    }
+}
+
+@media (max-width: 420px) { 
+    
+    .Search::placeholder {
+        font-size: 12px;
+        overflow-wrap: break-word;
+    }
+}
+
+

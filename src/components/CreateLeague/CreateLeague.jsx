@@ -3,10 +3,17 @@ import Form from 'react-bootstrap/Form';
 import "./CreateLeague.css"
 import Spinner from 'react-bootstrap/Spinner';
 
-export default function CreateLeague({displaySpinner, handleSubmit, handleHostInput, newHost, startYear, handleStartYearInput, newLeagueId,handleLeagueIdInput,newEspn_S2,handleEspn_S2Input,newEspn_Swid,handleEspn_SwidInput }) {
+export default function CreateLeague({setCreate, displaySpinner, handleSubmit, handleHostInput, newHost, startYear, handleStartYearInput, newLeagueId,handleLeagueIdInput,newEspn_S2,handleEspn_S2Input,newEspn_Swid,handleEspn_SwidInput }) {
+
+  function goBackFunc(){
+    setCreate(null)
+  }
+
   return (
+    <>
+    <Button className="back-btn" onClick={goBackFunc}>Back</Button>
     <div className='center'>
-    <Form onSubmit={handleSubmit}>
+    <Form className="form" onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="leagueName">
         <Form.Label>League Name</Form.Label>
         <Form.Control type="text" placeholder="" value={newHost}
@@ -14,7 +21,7 @@ export default function CreateLeague({displaySpinner, handleSubmit, handleHostIn
       </Form.Group>
       <Form.Group className="mb-3" controlId="LeagueID">
         <Form.Label>Year League Started</Form.Label>
-        <Form.Control type="number" placeholder="" value={startYear}
+        <Form.Control className="input" type="number" placeholder="" value={startYear}
         onChange={handleStartYearInput} required  />
       </Form.Group>
       <Form.Group className="mb-3" controlId="LeagueID">
@@ -33,7 +40,7 @@ export default function CreateLeague({displaySpinner, handleSubmit, handleHostIn
         onChange={handleEspn_SwidInput} required />
       </Form.Group>
       {displaySpinner === "false" ? (
-        <Button variant="primary" type="submit">
+        <Button className='btn' variant="primary" type="submit">
           Submit
         </Button>) :
         (
@@ -46,6 +53,7 @@ export default function CreateLeague({displaySpinner, handleSubmit, handleHostIn
     }
     </Form>
     </div>
+  </>
   );
 }
 

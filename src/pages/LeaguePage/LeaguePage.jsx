@@ -9,6 +9,8 @@ import { useState, useEffect } from "react";
 import LegacyPoints from "../../components/LegacyPoints";
 import TrophyRoom from "../../components/TrophyRoom";
 import Standings from "../../components/Standings";
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 
 export default function LeaguePage(baseurl){
@@ -78,10 +80,6 @@ export default function LeaguePage(baseurl){
     //         LegacyPoints.push(obj)
     // }
 
-
-
-
-
     useEffect(()=>{
         getWinsChartData()
         getLeagueData()
@@ -91,11 +89,26 @@ export default function LeaguePage(baseurl){
     return(
         <div className="container">
         <h1>{leagueName}</h1>
-        <Chart chartData={chartData} leagueName={leagueName}></Chart>
-        <BarChart barChartData={barChartData} leagueName={leagueName}></BarChart>
-        <LegacyPoints leagueData={leagueData}></LegacyPoints>
-        <TrophyRoom leagueData={leagueData}></TrophyRoom>
-        <Standings standings={standings}></Standings>
+        <div className="component-cont">
+        <Row>
+        <Col className="component" sm={12} md={6}>
+        <LegacyPoints ClassName="linechart" leagueData={leagueData}></LegacyPoints>
+        </Col>
+        <Col className="component" sm={12} md={6}>
+        <Chart ClassName="linechart" chartData={chartData} leagueName={leagueName}></Chart>
+        </Col>
+        <Col className="component" sm={12} md={6}>
+        <BarChart ClassName="linechart" barChartData={barChartData} leagueName={leagueName}></BarChart>
+        </Col>
+        <Col className="component" sm={12} md={6}>
+        <TrophyRoom ClassName="linechart" leagueData={leagueData}></TrophyRoom>
+        
+        </Col>
+        <Col className="component" sm={12} md={12}>
+        <Standings ClassName="linechart" standings={standings}></Standings>
+        </Col>
+        </Row>
+        </div>
         <h1>{Espn_League_Id}</h1>
         <Link to={`/${id}/edit`}>
         <button>

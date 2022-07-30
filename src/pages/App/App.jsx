@@ -3,7 +3,7 @@ import ViewLeagues from "../ViewLeagues/ViewLeagues"
 import LeaguePage from "../LeaguePage/LeaguePage"
 import EditLeaguePage from "../EditLeaguePage/EditLeaguePage"
 import Footer from "../../components/Footer"
-import NavbarComp from "../../components/Navbar";
+import NavbarComp from "../../components/Navbar/Navbar";
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import { AuthProvider } from "../../context/AuthContext";
 import Home from "../HomePage/HomePage";
