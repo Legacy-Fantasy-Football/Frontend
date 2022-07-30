@@ -18,8 +18,7 @@ export default function LegacyPoints({leagueData}){
 
 
     return(
-        <>
-        <h1>Legacy Points</h1>
+        <div className="LegacyPoints">
         <table>
             <thead>
             <tr>
@@ -41,6 +40,6 @@ export default function LegacyPoints({leagueData}){
         ))}
         </tbody>
         </table>
-        </>
+        </div>
     )
 }

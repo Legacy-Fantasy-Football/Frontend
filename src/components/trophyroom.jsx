@@ -58,13 +58,11 @@ export default function TrophyRoom({ leagueData}) {
 
   return (
     <>
-      <h1>Trophy Room</h1>
-
       <table>
         <thead>
         <tr>
           <th>Owner</th>
-          <th onClick={sortByYear}>Years Played</th>
+          <th onClick={sortByYear}>Years</th>
           <th onClick={sortByPlayoffs}>Playoffs</th>
           <th onClick={sortByFinals}>Finals</th>
           <th onClick={sortByChamps}>Champs</th>

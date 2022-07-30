@@ -26,9 +26,6 @@ export default class LeaguePage extends Component {
             animationDuration: 10000,
             zoomEnabled: true,
             zoomType: "xy",
-            title:{
-                text: "Total Wins"
-            },
             axisY :{
                 title: "Number of Wins",
                 suffix: "",

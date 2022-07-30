@@ -58,22 +58,28 @@ import "./Navbar.css"
 export default function NavbarComp() {
   const { user, logoutUser } = useContext(AuthContext);
   return (
-    <Navbar className="Navbar" collapseOnSelect expand="lg">
-      <Container>
-        <Navbar.Brand href="#home">Legacy Fantasy Football</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-        <Nav className="me-auto">
-        </Nav>
-        <Nav>
-          <Nav.Link href="#deets">{user.username}</Nav.Link>
-          <Nav.Link href="#memes">
-            Logout
-          </Nav.Link>
-        </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+    <>
+    {user? (
+      <Navbar className="Navbar" collapseOnSelect expand="lg">
+        <Container>
+          {/* <Navbar.Brand href="#home">Legacy Fantasy Football</Navbar.Brand> */}
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+          <Nav className="me-auto">
+          </Nav>
+          <Nav>
+            <Nav.Link href="#">{user.username}</Nav.Link>
+            <Nav.Link onClick={logoutUser} href="/login">
+              Logout
+            </Nav.Link>
+          </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
+    ):
+      <></>
+  }
+  </>
   );
 }
 

@@ -19,6 +19,7 @@ import Chart from "../Chart/Chart"
 import BarChart from "../Chart/BarChart"
 import MergeOwners from "../../components/MergeOwners"
 import CreateLeague from "../../components/CreateLeague/CreateLeague"
+import Dashboard from "../LeaguePage/Dashboard/Dashboard"
 
 export default function App(){
 
@@ -29,8 +30,7 @@ export default function App(){
       <Router>
         <div className="flex flex-col min-h-screen overflow-hidden">
         <AuthProvider>
-          
-          <NavbarComp />
+      
           <Routes>
             <Route element={<Login/>} path="/login" />
             <Route element={<Register/>} path="/register" />
@@ -41,6 +41,7 @@ export default function App(){
             <Route path="/chart" element={<Chart/>}></Route>
             <Route path="/BarChart" element={<BarChart/>}></Route>
             <Route path="/createLeague" element={<CreateLeague/>}></Route>
+            <Route path="/:Espn_League_Id/dashboard" element={<Dashboard base_url={base_url}/>}></Route>
             
           </Routes>
         </AuthProvider>

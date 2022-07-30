@@ -14,9 +14,6 @@ export default class BarChart extends Component {
             animationDuration: 10000,
             zoomEnabled: true,
             zoomType: "xy",
-			title: {
-				text: "Total Points"
-			},
             axisX:{
                 interval: 1,
               },
