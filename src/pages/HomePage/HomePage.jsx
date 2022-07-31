@@ -14,17 +14,13 @@ import Form from "react-bootstrap/Form";
 
 
 
-export default function Home({base_url}) {
+export default function Home({base_url, allLeagues, setAllLeagues}) {
 
   const { user, logoutUser } = useContext(AuthContext);
   const [displaySpinner, setDisplaySpinner] = useState("false")
   // console.log(user.user_id)
   let Navigate = useNavigate()
-
-
   const [leagues, setLeagues] = useState(false)
-  const [allLeagues, setAllLeagues] = useState([])
-  const [myLeagues, setMyLeagues] = useState([])
   const [newHost, setNewHost] = useState("")
   const [newLeagueId, setNewLeagueId] = useState("")
   const [newEspn_S2, setNewEspn_S2] = useState("")
@@ -64,7 +60,7 @@ export default function Home({base_url}) {
     setDisplaySpinner("true")
     e.preventDefault();
     //console.log(`newLeagueHost: ${newLeague.host}`)
-    axios.post(`${base_url}/wel/`, {
+    axios.post(`http://localhost:8000/wel/`, {
         user: user.user_id,
         host: newHost,
         year_started: startYear,

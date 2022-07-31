@@ -24,6 +24,7 @@ import Dashboard from "../LeaguePage/Dashboard/Dashboard"
 export default function App(){
 
     const base_url = "http://localhost:8000"
+    const [allLeagues, setAllLeagues] = useState([])
     // const { user, logoutUser } = useContext(AuthContext);
    
     return(
@@ -34,14 +35,14 @@ export default function App(){
           <Routes>
             <Route element={<Login/>} path="/login" />
             <Route element={<Register/>} path="/register" />
-            <Route element={<Home/>} path="/" />
-            <Route path="/:Espn_League_Id" element={<LeaguePage base_url={base_url}/>}></Route>
+            <Route element={<Home allLeagues={allLeagues} setAllLeagues={setAllLeagues}/>} path="/" />
             <Route path="/:Espn_League_Id/edit" element={<EditLeaguePage base_url={base_url}/>}></Route>
             <Route path="/:Espn_League_Id/merge" element={<MergeOwners base_url={base_url}/>}></Route>
             <Route path="/chart" element={<Chart/>}></Route>
             <Route path="/BarChart" element={<BarChart/>}></Route>
             <Route path="/createLeague" element={<CreateLeague/>}></Route>
-            <Route path="/:Espn_League_Id/dashboard" element={<Dashboard base_url={base_url}/>}></Route>
+            <Route path="/:Espn_League_Id/" element={<Dashboard base_url={base_url} allLeagues={allLeagues}/>}></Route>
+            {/* <Route path="/:Espn_League_Id" element={<LeaguePage base_url={base_url}/>}></Route> */}
             
           </Routes>
         </AuthProvider>

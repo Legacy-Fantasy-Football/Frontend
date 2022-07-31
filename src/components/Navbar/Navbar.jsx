@@ -68,8 +68,8 @@ export default function NavbarComp() {
           <Nav className="me-auto">
           </Nav>
           <Nav>
-            <Nav.Link href="#">{user.username}</Nav.Link>
-            <Nav.Link onClick={logoutUser} href="/login">
+            <Nav.Link className="navlink" href="#">{user.username}</Nav.Link>
+            <Nav.Link className="navlink" onClick={logoutUser} href="/login">
               Logout
             </Nav.Link>
           </Nav>

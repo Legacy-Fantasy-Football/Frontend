@@ -16,7 +16,7 @@ import AuthContext from "../../../context/AuthContext";
 import NavbarComp from "../../../components/Navbar/Navbar";
 
 
-export default function Dashboard({base_url}){
+export default function Dashboard({base_url, allLeagues}){
 
     let navigate = useNavigate()
     const [chartData, setChartData]= useState([])
@@ -114,102 +114,25 @@ export default function Dashboard({base_url}){
             </a>
 
             {/* <!-- Divider --> */}
-            <hr className="sidebar-divider my-0"></hr>
-
-            {/* <!-- Divider --> */}
             <hr className="sidebar-divider"></hr>
 
             {/* <!-- Heading --> */}
-            <div className="sidebar-heading">
-                Interface
+            <div className="sidebar-heading text-center">
+                My Leagues
             </div>
-
-            {/* <!-- Nav Item - Pages Collapse Menu --> */}
-            <li className="nav-item">
-                <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo"
-                    aria-expanded="true" aria-controls="collapseTwo">
-                    <i className="fas fa-fw fa-cog"></i>
-                    <span>Components</span>
-                </a>
-                <div id="collapseTwo" className="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div className="bg-white py-2 collapse-inner rounded">
-                        <h6 className="collapse-header">Custom Components:</h6>
-                        <a className="collapse-item" href="buttons.html">Buttons</a>
-                        <a className="collapse-item" href="cards.html">Cards</a>
-                    </div>
-                </div>
-            </li>
-
-            {/* <!-- Nav Item - Utilities Collapse Menu --> */}
-            <li className="nav-item">
-                <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseUtilities"
-                    aria-expanded="true" aria-controls="collapseUtilities">
-                    <i className="fas fa-fw fa-wrench"></i>
-                    <span>Utilities</span>
-                </a>
-                <div id="collapseUtilities" className="collapse" aria-labelledby="headingUtilities"
-                    data-parent="#accordionSidebar">
-                    <div className="bg-white py-2 collapse-inner rounded">
-                        <h6 className="collapse-header">Custom Utilities:</h6>
-                        <a className="collapse-item" href="utilities-color.html">Colors</a>
-                        <a className="collapse-item" href="utilities-border.html">Borders</a>
-                        <a className="collapse-item" href="utilities-animation.html">Animations</a>
-                        <a className="collapse-item" href="utilities-other.html">Other</a>
-                    </div>
-                </div>
-            </li>
-
-            {/* <!-- Divider --> */}
-            <hr className="sidebar-divider"></hr>
-
-            {/* <!-- Heading --> */}
-            <div className="sidebar-heading">
-                Addons
-            </div>
-
-            {/* <!-- Nav Item - Pages Collapse Menu --> */}
-            <li className="nav-item">
-                <a className="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsePages"
-                    aria-expanded="true" aria-controls="collapsePages">
-                    <i className="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div id="collapsePages" className="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
-                    <div className="bg-white py-2 collapse-inner rounded">
-                        <h6 className="collapse-header">Login Screens:</h6>
-                        <a className="collapse-item" href="login.html">Login</a>
-                        <a className="collapse-item" href="register.html">Register</a>
-                        <a className="collapse-item" href="forgot-password.html">Forgot Password</a>
-                        <div className="collapse-divider"></div>
-                        <h6 className="collapse-header">Other Pages:</h6>
-                        <a className="collapse-item" href="404.html">404 Page</a>
-                        <a className="collapse-item" href="blank.html">Blank Page</a>
-                    </div>
-                </div>
-            </li>
-
-            {/* <!-- Nav Item - Charts --> */}
-            <li className="nav-item">
-                <a className="nav-link" href="charts.html">
-                    <i className="fas fa-fw fa-chart-area"></i>
-                    <span>Charts</span></a>
-            </li>
-
-            {/* <!-- Nav Item - Tables --> */}
-            <li className="nav-item">
-                <a className="nav-link" href="tables.html">
-                    <i className="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
-
             {/* <!-- Divider --> */}
             <hr className="sidebar-divider d-none d-md-block"></hr>
-
-            {/* <!-- Sidebar Toggler (Sidebar) --> */}
-            <div className="text-center d-none d-md-inline">
-                <button className="rounded-circle border-0" id="sidebarToggle"></button>
+            <div className="sidebar-content text-center">
+            {allLeagues.map((item)=>(
+                user.user_id === item[1]?(
+                    <>
+                        <Link className="MyLeagueLinks" to={`${item[2]}`}>{item[2]}</Link>
+                        <br></br>
+                    </>
+                ):
+                <></>
+            ))}
             </div>
-
 
         </ul>
         {/* <!-- End of Sidebar --> */}
@@ -273,7 +196,7 @@ export default function Dashboard({base_url}){
                                 {/* <!-- Card Header - Dropdown --> */}
                                 <div
                                     className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 className="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                                    <h6 className="m-0 font-weight-bold text-primary">Total Wins</h6>
                                     <div className="dropdown no-arrow">
                                         <a className="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -303,7 +226,7 @@ export default function Dashboard({base_url}){
                                 {/* <!-- Card Header - Dropdown --> */}
                                 <div
                                     className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 className="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                                    <h6 className="m-0 font-weight-bold text-primary">Legacy Points</h6>
                                     <div className="dropdown no-arrow">
                                         <a className="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -335,7 +258,7 @@ export default function Dashboard({base_url}){
                                 {/* <!-- Card Header - Dropdown --> */}
                                 <div
                                     className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 className="m-0 font-weight-bold text-primary">Revenue Sources</h6>
+                                    <h6 className="m-0 font-weight-bold text-primary">Trophy Room</h6>
                                     <div className="dropdown no-arrow">
                                         <a className="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -365,7 +288,7 @@ export default function Dashboard({base_url}){
                                 {/* <!-- Card Header - Dropdown --> */}
                                 <div
                                     className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
-                                    <h6 className="m-0 font-weight-bold text-primary">Earnings Overview</h6>
+                                    <h6 className="m-0 font-weight-bold text-primary">Total Points</h6>
                                     <div className="dropdown no-arrow">
                                         <a className="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
                                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
