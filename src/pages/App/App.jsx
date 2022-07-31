@@ -33,15 +33,15 @@ export default function App(){
         <AuthProvider>
       
           <Routes>
-            <Route element={<Login/>} path="/login" />
+            <Route element={<Login/>} path="/" />
             <Route element={<Register/>} path="/register" />
-            <Route element={<Home allLeagues={allLeagues} setAllLeagues={setAllLeagues}/>} path="/" />
-            <Route path="/:Espn_League_Id/edit" element={<EditLeaguePage base_url={base_url}/>}></Route>
-            <Route path="/:Espn_League_Id/merge" element={<MergeOwners base_url={base_url}/>}></Route>
-            <Route path="/chart" element={<Chart/>}></Route>
-            <Route path="/BarChart" element={<BarChart/>}></Route>
-            <Route path="/createLeague" element={<CreateLeague/>}></Route>
-            <Route path="/:Espn_League_Id/" element={<Dashboard base_url={base_url} allLeagues={allLeagues}/>}></Route>
+            <Route element={<Home allLeagues={allLeagues} setAllLeagues={setAllLeagues}/>} path="/home" />
+            <Route path="/home/:Espn_League_Id/edit" element={<EditLeaguePage base_url={base_url}/>}></Route>
+            <Route path="/home/:Espn_League_Id/merge" element={<MergeOwners base_url={base_url}/>}></Route>
+            <Route path="/home/chart" element={<Chart/>}></Route>
+            <Route path="/home/BarChart" element={<BarChart/>}></Route>
+            <Route path="/home/createLeague" element={<CreateLeague/>}></Route>
+            <Route path="/home/:Espn_League_Id/" element={<Dashboard base_url={base_url} allLeagues={allLeagues}/>}></Route>
             {/* <Route path="/:Espn_League_Id" element={<LeaguePage base_url={base_url}/>}></Route> */}
             
           </Routes>

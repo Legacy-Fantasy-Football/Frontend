@@ -1,0 +1,21 @@
+.yearrow{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    overflow: scroll;
+}
+
+.year{
+    margin: 1vh;
+    font-size: 25px;
+}
+
+.standingsTable{
+    display: flex;
+    justify-content: center;
+}
+
+.standingsTable table {
+    width: 50vw;
+    text-align: center;
+}

@@ -8,7 +8,7 @@ import BarChart from "../../Chart/BarChart"
 import { useState, useEffect, useContext } from "react";
 import LegacyPoints from "../../../components/LegacyPoints/LegacyPoints";
 import TrophyRoom from "../../../components/TrophyRoom";
-import Standings from "../../../components/Standings";
+import Standings from "../../../components/Standings/Standings";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import Button from "react-bootstrap/Button";
@@ -308,6 +308,38 @@ export default function Dashboard({base_url, allLeagues}){
                                 <div className="card-body chart">
                                     <div className="chart-area">
                                     <BarChart classNameName="linechart" barChartData={barChartData} leagueName={leagueName}></BarChart>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </Row>
+                    <Row>
+                    {/* <!-- Pie Chart --> */}
+                    <div className="col-12">
+                            <div className="card shadow mb-4">
+                                {/* <!-- Card Header - Dropdown --> */}
+                                <div
+                                    className="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+                                    <h6 className="m-0 font-weight-bold text-primary">Standings</h6>
+                                    <div className="dropdown no-arrow">
+                                        <a className="dropdown-toggle" href="#" role="button" id="dropdownMenuLink"
+                                            data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i className="fas fa-ellipsis-v fa-sm fa-fw text-gray-400"></i>
+                                        </a>
+                                        <div className="dropdown-menu dropdown-menu-right shadow animated--fade-in"
+                                            aria-labelledby="dropdownMenuLink">
+                                            <div className="dropdown-header">Dropdown Header:</div>
+                                            <a className="dropdown-item" href="#">Action</a>
+                                            <a className="dropdown-item" href="#">Another action</a>
+                                            <div className="dropdown-divider"></div>
+                                            <a className="dropdown-item" href="#">Something else here</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                {/* <!-- Card Body --> */}
+                                <div className="card-body chart">
+                                    <div className="chart-scroll pb-2">
+                                    <Standings classNameName="linechart" standings={standings}></Standings>
                                     </div>
                                 </div>
                             </div>

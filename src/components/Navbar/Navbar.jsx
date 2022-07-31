@@ -69,7 +69,7 @@ export default function NavbarComp() {
           </Nav>
           <Nav>
             <Nav.Link className="navlink" href="#">{user.username}</Nav.Link>
-            <Nav.Link className="navlink" onClick={logoutUser} href="/login">
+            <Nav.Link className="navlink" onClick={logoutUser} href="/">
               Logout
             </Nav.Link>
           </Nav>

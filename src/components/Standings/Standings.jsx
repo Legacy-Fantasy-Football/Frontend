@@ -2,12 +2,14 @@ import { useEffect, useState } from "react";
 import "./Standings.css"
 
 export default function Standings({standings}){
-    const[yearstandings, setYearStandings] = useState()
+    const[yearstandings, setYearStandings] = useState([])
     const[lastyearstandings, setLastYearStandings] = useState([])
 
     let standingsArr = []
     let thisyear = []
     let lastyear = []
+
+    const um =  standings[2021]
 
     for(const key in standings){
         const obj = {
@@ -67,18 +69,17 @@ export default function Standings({standings}){
     console.log(standingsArr)
 
     useEffect(() =>{
-        
+        setYearStandings(lastyearsorted)
     }, [])
 
 
     return(
         <>
-        <h1>Standings</h1>
         <div className="yearrow">{standingsArr.map((year, id)=>(
-            <h1 className="year" onClick={getyear}>{year.year}</h1>
+            <h3 className="year" onClick={getyear}>{year.year}</h3>
         ))}</div>
         {yearstandings ? (
-        <>
+        <div className="standingsTable">
         <table>
             <thead>
             <tr>
@@ -96,8 +97,8 @@ export default function Standings({standings}){
            </tr>
         ))}
         </tbody>
-      </table> </>):( 
-      <>
+      </table> </div>):( 
+      <div className="standingsTable">
         <table>
             <thead>
             <tr>
@@ -107,7 +108,7 @@ export default function Standings({standings}){
             </tr>
             </thead>
         <tbody>
-        {lastyearsorted.map((owner, id) =>(
+        {yearstandings.map((owner, id) =>(
              <tr>
              <td>{owner.name}</td>
              <td>{owner.wins}</td>
@@ -115,7 +116,7 @@ export default function Standings({standings}){
            </tr>
         ))}
         </tbody>
-      </table> </>)}
+      </table> </div>)}
             </>
     )
 }
