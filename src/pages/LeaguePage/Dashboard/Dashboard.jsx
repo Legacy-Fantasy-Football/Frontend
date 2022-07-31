@@ -14,9 +14,10 @@ import Col from 'react-bootstrap/Col';
 import Button from "react-bootstrap/Button";
 import AuthContext from "../../../context/AuthContext";
 import NavbarComp from "../../../components/Navbar/Navbar";
+import Sidebar from "../../../components/Sidebar/Sidebar";
 
 
-export default function Dashboard({base_url, allLeagues}){
+export default function Dashboard({getallleagues,base_url, allLeagues}){
 
     let navigate = useNavigate()
     const [chartData, setChartData]= useState([])
@@ -96,46 +97,13 @@ export default function Dashboard({base_url, allLeagues}){
         getWinsChartData()
         getLeagueData()
         getPointsChartData()
-      },[])
+      }, [])
     
     return(
         // <!-- Page Wrapper -->
     <div id="wrapper">
 
-        {/* <!-- Sidebar --> */}
-        <ul className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
-
-            {/* <!-- Sidebar - Brand --> */}
-            <a className="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
-                <div className="sidebar-brand-icon rotate-n-15">
-                    <i className="fas fa-laugh-wink"></i>
-                </div>
-                <div className="sidebar-brand-text mx-3">Legacy Fantasy Football</div>
-            </a>
-
-            {/* <!-- Divider --> */}
-            <hr className="sidebar-divider"></hr>
-
-            {/* <!-- Heading --> */}
-            <div className="sidebar-heading text-center">
-                My Leagues
-            </div>
-            {/* <!-- Divider --> */}
-            <hr className="sidebar-divider d-none d-md-block"></hr>
-            <div className="sidebar-content text-center">
-            {allLeagues.map((item)=>(
-                user.user_id === item[1]?(
-                    <>
-                        <Link className="MyLeagueLinks" to={`${item[2]}`}>{item[2]}</Link>
-                        <br></br>
-                    </>
-                ):
-                <></>
-            ))}
-            </div>
-
-        </ul>
-        {/* <!-- End of Sidebar --> */}
+        <Sidebar getallleagues={getallleagues} allLeagues={allLeagues} user={user}></Sidebar>
         {/* <!-- Content Wrapper --> */}
         <div id="content-wrapper" className="d-flex flex-column">
 
@@ -186,6 +154,7 @@ export default function Dashboard({base_url, allLeagues}){
                             </div>
                         </div>
                         <div className="col-xl-3 col-md-6 mb-4 ">
+
                                 <Button onClick={addToMyleagues}>Add to My Leagues</Button>
                         </div>
                     </Row>

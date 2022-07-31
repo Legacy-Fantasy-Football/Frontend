@@ -14,7 +14,7 @@ import Form from "react-bootstrap/Form";
 
 
 
-export default function Home({base_url, allLeagues, setAllLeagues}) {
+export default function Home({base_url, allLeagues, setAllLeagues, getallleagues}) {
 
   const { user, logoutUser } = useContext(AuthContext);
   const [displaySpinner, setDisplaySpinner] = useState("false")
@@ -86,19 +86,6 @@ export default function Home({base_url, allLeagues, setAllLeagues}) {
     e.preventDefault()
     Navigate(`/${search}`)
   }
-
-
-  function getallleagues(){
-    let data
-    axios.get(`http://localhost:8000/leagues`)
-    .then(res => {
-        data = res.data;
-        setAllLeagues(data)
-        // console.log(`all leagues: ${data}`)
-    })
-    .catch(err => {})
-  }
-
 
   useEffect(()=>{
     getLeagues()

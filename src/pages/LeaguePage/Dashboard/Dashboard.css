@@ -11293,3 +11293,7 @@ body.sidebar-toggled footer.sticky-footer {
 .button-cont{
   align-items: center;
 }
+
+.sidebar-content{
+  color: white;
+}
