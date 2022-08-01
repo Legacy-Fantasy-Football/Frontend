@@ -1,6 +1,5 @@
 import "./App.css"
 import ViewLeagues from "../ViewLeagues/ViewLeagues"
-import LeaguePage from "../LeaguePage/LeaguePage"
 import EditLeaguePage from "../EditLeaguePage/EditLeaguePage"
 import Footer from "../../components/Footer"
 import NavbarComp from "../../components/Navbar/Navbar";
@@ -55,7 +54,6 @@ export default function App(){
             <Route path="/home/BarChart" element={<BarChart/>}></Route>
             <Route path="/home/createLeague" element={<CreateLeague/>}></Route>
             <Route path="/home/:Espn_League_Id/" element={<Dashboard getallleagues={getallleagues} base_url={base_url} allLeagues={allLeagues}/>}></Route>
-            {/* <Route path="/:Espn_League_Id" element={<LeaguePage base_url={base_url}/>}></Route> */}
             
           </Routes>
         </AuthProvider>
