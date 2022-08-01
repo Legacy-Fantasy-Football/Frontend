@@ -6,54 +6,6 @@ import Navbar from 'react-bootstrap/Navbar';
 import Nav from 'react-bootstrap/Nav'
 import "./Navbar.css"
 
-// export default function NavbarComp(){
-//   const { user, logoutUser } = useContext(AuthContext);
-//   console.log(user)
-//   return (
-//     <nav>
-//       <div>
-//         <h1>Legacy Fantasy Football</h1>
-//         <div>
-//           {user ? (
-//             <>
-//               <Link to="/">Home</Link>
-//               <button onClick={logoutUser}>Logout</button>
-//             </>
-//           ) : (
-//             <>
-              
-//             </>
-//           )}
-//         </div>
-//       </div>
-//     </nav>
-//   );
-// };
-
-// export default function NavbarComp() {
-//   const { user, logoutUser } = useContext(AuthContext);
-//   return (
-//     <Navbar>
-//       <Container>
-//         <Navbar.Brand href="#home">Legacy Fantasy Football</Navbar.Brand>
-//         <Navbar.Toggle />
-//         <Navbar.Collapse className="justify-content-end">
-//           {user?(
-//             <>
-//             <Navbar.Text>
-//               Signed in as: <a href="#login">{user.username}</a>
-//             </Navbar.Text>
-//             <Navbar.Text onClick={logoutUser}>
-//               logout
-//             </Navbar.Text>
-//             </>
-//           ):<></>}
-//         </Navbar.Collapse>
-//       </Container>
-//     </Navbar>
-//   );
-// }
-
 
 export default function NavbarComp() {
   const { user, logoutUser } = useContext(AuthContext);

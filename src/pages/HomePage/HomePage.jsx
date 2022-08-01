@@ -32,7 +32,7 @@ export default function Home({base_url, allLeagues, setAllLeagues, getallleagues
   function getLeagues(){
     console.log("it mounted")
     let data;
-    axios.get(`http://localhost:8000/wel/`)
+    axios.get(`${base_url}/wel/`)
         .then(res => {
             data = res.data;
             setLeagues(data)
@@ -60,7 +60,7 @@ export default function Home({base_url, allLeagues, setAllLeagues, getallleagues
     setDisplaySpinner("true")
     e.preventDefault();
     //console.log(`newLeagueHost: ${newLeague.host}`)
-    axios.post(`http://localhost:8000/wel/`, {
+    axios.post(`${base_url}/wel/`, {
         user: user.user_id,
         host: newHost,
         year_started: startYear,

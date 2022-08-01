@@ -28,7 +28,7 @@ export default function EditLeaguePage(base_url){
       function handleSubmit(e){
         e.preventDefault();
         //console.log(`newLeagueHost: ${newLeague.host}`)
-        axios.put(`http://localhost:8000/wel/${id}/`, {
+        axios.put(`${base_url}/wel/${id}/`, {
             host: newHost,
             Espn_League_Id: newLeagueId,
             Espn_S2: newEspn_S2,

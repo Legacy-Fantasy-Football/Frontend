@@ -34,7 +34,7 @@ export default function Dashboard({getallleagues,base_url, allLeagues}){
 
     function getWinsChartData(){
         let data
-        axios.get(`http://localhost:8000/wins/${id}`)
+        axios.get(`${base_url}/wins/${id}`)
         .then(res => {
             data = res.data;
             // console.log(data)
@@ -44,7 +44,7 @@ export default function Dashboard({getallleagues,base_url, allLeagues}){
     }
     function getPointsChartData(){
         let data
-        axios.get(`http://localhost:8000/points/${id}`)
+        axios.get(`${base_url}/points/${id}`)
         .then(res => {
             data = res.data;
             console.log(data.bigdata)
