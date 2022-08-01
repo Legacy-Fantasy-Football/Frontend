@@ -10,9 +10,9 @@ export default function CreateLeague({setCreate, displaySpinner, handleSubmit, h
   }
 
   return (
-    <>
-    <Button className="back-btn" onClick={goBackFunc}>Back</Button>
-    <div className='center'>
+    <div>
+    {/* <Button className="back-btn" onClick={goBackFunc}>Back</Button> */}
+    <div className='create-league-center create-league-box'>
     <Form className="form" onSubmit={handleSubmit}>
       <Form.Group className="mb-3" controlId="leagueName">
         <Form.Label>League Name</Form.Label>
@@ -53,7 +53,7 @@ export default function CreateLeague({setCreate, displaySpinner, handleSubmit, h
     }
     </Form>
     </div>
-  </>
+  </div>
   );
 }
 

@@ -20,7 +20,7 @@ export default function Sidebar({allLeagues, getallleagues, user}){
                 <div className="sidebar-brand-icon rotate-n-15">
                     <i className="fas fa-laugh-wink"></i>
                 </div>
-                <div className="sidebar-brand-text mx-3">Legacy Fantasy Football</div>
+                <div className="sidebar-brand-text mt-2 mb-2 mx-3">Legacy Fantasy Football</div>
             </a>
 
             {/* <!-- Divider --> */}

@@ -57,7 +57,7 @@ export const AuthProvider = ({ children }) => {
       })
     });
     if (response.status === 201) {
-      navigate("/login");
+      navigate("/");
     } else {
       alert("Something went wrong!");
     }

@@ -11,13 +11,19 @@
 
 
 body {
+  height: 100vh;
+  width: 100vw;
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background-color: var(--light);
+  background: linear-gradient(315deg, hsla(225, 69%, 59%, 1) 0%, hsla(158, 75%, 45%, 1) 100%);
+
+    background: -moz-linear-gradient(315deg, hsla(225, 69%, 59%, 1) 0%, hsla(158, 75%, 45%, 1) 100%);
+
+    background: -webkit-linear-gradient(315deg, hsla(225, 69%, 59%, 1) 0%, hsla(158, 75%, 45%, 1) 100%);
 }
 
 code {

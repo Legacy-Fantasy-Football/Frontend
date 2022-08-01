@@ -69,7 +69,7 @@ export default function Home({base_url, allLeagues, setAllLeagues, getallleagues
         Espn_Swid: newEspn_Swid
       })
       .then((res) =>{
-        Navigate(`/${newLeagueId}`)
+        Navigate(`/home/${newLeagueId}`)
       })
       .catch((err) =>{})
   }
@@ -84,7 +84,7 @@ export default function Home({base_url, allLeagues, setAllLeagues, getallleagues
 
   function goToLeague(e){
     e.preventDefault()
-    Navigate(`/${search}`)
+    Navigate(`/home/${search}`)
   }
 
   useEffect(()=>{
@@ -102,36 +102,64 @@ export default function Home({base_url, allLeagues, setAllLeagues, getallleagues
       <CreateLeague setCreate={setCreate} displaySpinner={displaySpinner} handleSubmit={handleSubmit} handleHostInput={handleHostInput} newHost={newHost} startYear={startYear} handleStartYearInput={handleStartYearInput} newLeagueId={newLeagueId} handleLeagueIdInput={handleLeagueIdInput} newEspn_S2={newEspn_S2} handleEspn_S2Input={handleEspn_S2Input} newEspn_Swid={newEspn_Swid} handleEspn_SwidInput={handleEspn_SwidInput} ></CreateLeague>
     </div>
     ) : (
-      <div className="home">
-      <div className="d-grid createorfind gap-2">
-        <div className="row">
-        <Form onSubmit={goToLeague} className="Form">
-          <Form.Group className="mb-3" controlId="formBasicEmail">
-          <Form.Control className="Search" type="number" placeholder="Enter your Espn league id" onChange={handlesearch} value={search}/>
-        </Form.Group>
-        <Button type="submit" variant="primary" size="lg">
-        Search for League
-        </Button>
-        </Form>
-        <Button onClick={setCreateFunc} className="large-btn" variant="primary" size="lg">
+      <div className="home-background">
+        <div className="home-box">
+        <form onSubmit={goToLeague} className="">
+          <h1 className="pt-5">Search for a league</h1>
+          <input type="number" id="leagueid" placeholder="Enter your Espn league id" onChange={handlesearch} value={search} />
+          <input type="submit" name="" value="Search"/>
+        </form>
+
+        <div className="MyLeagues">My Leagues</div>
+          <div>
+          {allLeagues.map((item)=>(
+            user.user_id === item[1]?(
+              <>
+              <Link className="MyHomeLeagueLinks" to={`${item[2]}`}>{item[2]}</Link>
+              <br></br>
+              </>
+            ):
+            <></>
+          ))}
+          </div>
+        <Button onClick={setCreateFunc} className="mt-2 mb-5 create-league large-btn" variant="primary" size="lg">
             Create League
         </Button>
         </div>
       </div>
 
-      <div className="MyLeagues">My Leagues</div>
-      <div>
-      {allLeagues.map((item)=>(
-        user.user_id === item[1]?(
-          <>
-          <Link className="MyLeagueLinks" to={`${item[2]}`}>{item[2]}</Link>
-          <br></br>
-          </>
-        ):
-        <></>
-      ))}
-      </div>
-      </div>
+
+
+      // <div className="home">
+      // <div className="d-grid createorfind gap-2">
+      //   <div className="row">
+      //   <Form onSubmit={goToLeague} className="Form">
+      //     <Form.Group className="mb-3" controlId="formBasicEmail">
+      //     <Form.Control className="Search" type="number" placeholder="Enter your Espn league id" onChange={handlesearch} value={search}/>
+      //   </Form.Group>
+      //   <Button type="submit" variant="primary" size="lg">
+      //   Search for League
+      //   </Button>
+      //   </Form>
+      //   <Button onClick={setCreateFunc} className="large-btn" variant="primary" size="lg">
+      //       Create League
+      //   </Button>
+      //   </div>
+      // </div>
+
+      // <div className="MyLeagues">My Leagues</div>
+      // <div>
+      // {allLeagues.map((item)=>(
+      //   user.user_id === item[1]?(
+      //     <>
+      //     <Link className="MyLeagueLinks" to={`${item[2]}`}>{item[2]}</Link>
+      //     <br></br>
+      //     </>
+      //   ):
+      //   <></>
+      // ))}
+      // </div>
+      // </div>
       
     
     ) }

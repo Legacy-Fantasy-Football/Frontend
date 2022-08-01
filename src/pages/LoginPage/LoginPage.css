@@ -1,4 +1,6 @@
-body {
+.login-background {
+    height: 100vh;
+    width: 100vw;
     margin: 0;
     padding: 0;
     font-family: sans-serif;
@@ -7,16 +9,16 @@ body {
     background: -moz-linear-gradient(315deg, hsla(225, 69%, 59%, 1) 0%, hsla(158, 75%, 45%, 1) 100%);
 
     background: -webkit-linear-gradient(315deg, hsla(225, 69%, 59%, 1) 0%, hsla(158, 75%, 45%, 1) 100%);
+    justify-content: center;
 }
 
-.container{
-    height: 100vh;
+.login-container{
     display: flex;
     justify-content: center;
-    align-items: center;
 }
 
 .box {
+    margin-top: 10vh;
     width: 500px;
     /* padding: 40px; */
     /* position: absolute;
@@ -24,6 +26,7 @@ body {
     left: 50%; */
     background: white
     ; 
+
     text-align: center;
     transition: 0.25s;
     border-radius: 5%;
@@ -36,11 +39,11 @@ body {
     display: block;
     margin: 20px auto;
     text-align: center;
-    border: 2px solid #3498db;
+    border: 2px solid #4e73df;
     padding: 10px 10px;
     width: 250px;
     outline: none;
-    color: white;
+    color: black;
     border-radius: 24px;
     transition: 0.25s
 }
@@ -59,7 +62,7 @@ body {
 
 .box input[type="submit"] {
     border: 0;
-    background: none;
+    background: #2ecc71;
     display: block;
     margin: 20px auto;
     text-align: center;
@@ -73,7 +76,8 @@ body {
 }
 
 .box input[type="submit"]:hover {
-    background: #2ecc71
+    background: #4e73df;
+    border:#4e73df;
 }
 
 .forgot {
@@ -142,4 +146,13 @@ a.socialIcon:hover,
     color: #fff;
     transition: all 0.8s;
     transition: all 0.8s
+}
+
+.header{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    flex-direction: column;
+    color: white;
+    padding-top: 5vh;
 }

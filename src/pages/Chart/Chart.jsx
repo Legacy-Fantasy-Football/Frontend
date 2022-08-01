@@ -27,7 +27,6 @@ export default class LeaguePage extends Component {
             zoomEnabled: true,
             zoomType: "xy",
             axisY :{
-                title: "Number of Wins",
                 suffix: "",
                 crosshair: {
 					enabled: true,

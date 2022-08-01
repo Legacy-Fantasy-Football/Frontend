@@ -6,7 +6,7 @@
     overflow:scroll;
 }
 
-.MyLeagueLinks{
+.MyHomeLeagueLinks{
     text-decoration: none;
     color: black
 }
@@ -20,6 +20,10 @@
     display: flex;
     flex-direction: column;
     text-align: center;
+}
+
+.create-league{
+    border-radius: 24px;
 }
 
 .MyLeagues{
@@ -46,6 +50,90 @@
 
 .Form{
     margin-bottom: 5vh;
+}
+
+.home-background{
+    position: absolute;
+    height: 100vh;
+    width: 100vw;
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    background: linear-gradient(315deg, hsla(225, 69%, 59%, 1) 0%, hsla(158, 75%, 45%, 1) 100%);
+
+    background: -moz-linear-gradient(315deg, hsla(225, 69%, 59%, 1) 0%, hsla(158, 75%, 45%, 1) 100%);
+
+    background: -webkit-linear-gradient(315deg, hsla(225, 69%, 59%, 1) 0%, hsla(158, 75%, 45%, 1) 100%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.home-box{
+    margin-top: 10vh;
+    width: 50%;
+    /* padding: 40px; */
+    /* position: absolute;
+    top: 50%;
+    left: 50%; */
+    background: white
+    ; 
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    transition: 0.25s;
+    border-radius: 5%;
+}
+
+.home-box input[type="text"],
+.home-box input[type="password"] {
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #4e73df;
+    padding: 10px 10px;
+    width: 250px;
+    outline: none;
+    color: black;
+    border-radius: 24px;
+    transition: 0.25s
+}
+
+.home-box h1 {
+    color: black;
+    text-transform: uppercase;
+    font-weight: 500
+}
+
+.home-box input[type="text"]:focus,
+.home-box input[type="password"]:focus {
+    width: 300px;
+    border-color: #2ecc71
+}
+
+.home-box input[type="submit"] {
+    border: 0;
+    background: #2ecc71;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #2ecc71;
+    padding: 14px 40px;
+    outline: none;
+    color: white;
+    border-radius: 24px;
+    transition: 0.25s;
+    cursor: pointer
+}
+
+.home-box input[type="submit"]:hover {
+    background: #4e73df;
+    border:#4e73df;
 }
 
 
