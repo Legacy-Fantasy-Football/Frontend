@@ -253,7 +253,7 @@ export default function Dashboard({getallleagues,base_url, allLeagues}){
                                 {/* <!-- Card Body --> */}
                                 <div className="card-body chart">
                                     <div className="chart-scroll pb-2">
-                                    <TrophyRoom classNameName="linechart" leagueData={leagueData}></TrophyRoom>
+                                    <TrophyRoom className="linechart" leagueData={leagueData}></TrophyRoom>
                                     </div>
                                 </div>
                             </div>
@@ -327,42 +327,3 @@ export default function Dashboard({getallleagues,base_url, allLeagues}){
     </div>
         )
     }
-    {/* }
-        // <div classNameName="container">
-        // <h1>{leagueName}</h1>
-        // <Button onClick={addToMyleagues}>Add to My Leagues</Button>
-        // <div classNameName="component-cont">
-        // <Row>
-        // <Col classNameName="component" sm={12} md={6}>
-        // <LegacyPoints classNameName="linechart" leagueData={leagueData}></LegacyPoints>
-        // </Col>
-        // <Col classNameName="component" sm={12} md={6}>
-        // <Chart classNameName="linechart" chartData={chartData} leagueName={leagueName}></Chart>
-        // </Col>
-        // <Col classNameName="component" sm={12} md={6}>
-        // <BarChart classNameName="linechart" barChartData={barChartData} leagueName={leagueName}></BarChart>
-        // </Col>
-        // <Col classNameName="component" sm={12} md={6}>
-        // <TrophyRoom classNameName="linechart" leagueData={leagueData}></TrophyRoom>
-        
-        // </Col>
-        // <Col classNameName="component" sm={12} md={12}>
-        // <Standings classNameName="linechart" standings={standings}></Standings>
-        // </Col>
-        // </Row>
-        // </div>
-        // <h1>{Espn_League_Id}</h1>
-        // <Link to={`/${id}/edit`}>
-        // <button>
-        //     Edit
-        // </button>
-        // </Link>
-        // <Link to={`/${id}/merge`}>
-        // <button>
-        //     Merge Owners
-        // </button>
-        // </Link>
-        // <button onClick={deleteLeague}>
-        //     Delete
-        // </button>
-        // </div> */}
