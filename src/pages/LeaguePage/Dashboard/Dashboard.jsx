@@ -31,6 +31,7 @@ export default function Dashboard({getallleagues,base_url, allLeagues}){
     const id = Espn_League_Id
     console.log(id)
 
+
     function getWinsChartData(){
         let data
         axios.get(`http://localhost:8000/wins/${id}`)
@@ -64,11 +65,17 @@ export default function Dashboard({getallleagues,base_url, allLeagues}){
 
     console.log(barChartData)
 
+    let standingsarr = []
     function getLeagueData(){
         let data
         axios.get(`${base_url}/wel/${id}`)
         .then(res => {
             data = res.data;
+            console.log(data.standings)
+            // data.standings.forEach((d)=>{
+            //     standingsarr.push(d)
+            // })
+            standingsarr = data.standings
             setStandings(data.standings)
             setLeagueName(data.host)
             setLeagueData(data.bigdata)
@@ -76,7 +83,7 @@ export default function Dashboard({getallleagues,base_url, allLeagues}){
         .catch(err => {})
     }
 
-    console.log(leagueData)
+    console.log(standingsarr)
 
 
     const deleteLeague = async () =>{
@@ -126,8 +133,8 @@ export default function Dashboard({getallleagues,base_url, allLeagues}){
                                     <div className="row no-gutters align-items-center">
                                         <div className="col mr-2">
                                             <div className="text-xs font-weight-bold text-primary text-uppercase mb-1">
-                                                Earnings (Monthly)</div>
-                                            <div className="h5 mb-0 font-weight-bold text-gray-800">$40,000</div>
+                                                Number of Owners</div>
+                                            <div className="h5 mb-0 font-weight-bold text-gray-800">{chartData.length}</div>
                                         </div>
                                         <div className="col-auto">
                                             <i className="fas fa-calendar fa-2x text-gray-300"></i>
@@ -143,8 +150,8 @@ export default function Dashboard({getallleagues,base_url, allLeagues}){
                                     <div className="row no-gutters align-items-center">
                                         <div className="col mr-2">
                                             <div className="text-xs font-weight-bold text-success text-uppercase mb-1">
-                                                Earnings (Annual)</div>
-                                            <div className="h5 mb-0 font-weight-bold text-gray-800">$215,000</div>
+                                                Number of Years</div>
+                                            <div className="h5 mb-0 font-weight-bold text-gray-800">{Object.values(standings).length}</div>
                                         </div>
                                         <div className="col-auto">
                                             <i className="fas fa-dollar-sign fa-2x text-gray-300"></i>

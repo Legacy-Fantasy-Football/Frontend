@@ -1,4 +1,9 @@
 .LegacyPoints{
     height: 430px;
+    width: 100%;
     overflow: scroll
+}
+
+.table{
+    width: 100%
 }

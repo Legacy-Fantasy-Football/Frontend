@@ -23,7 +23,18 @@
 }
 
 .create-league{
+    border: 0;
+    background: none;
+    display: block;
+    margin: 20px auto;
+    text-align: center;
+    border: 2px solid #4e73df;
+    padding: 10px 10px;
+    width: 250px;
+    outline: none;
+    color: black;
     border-radius: 24px;
+    transition: 0.25s
 }
 
 .MyLeagues{
@@ -50,6 +61,19 @@
 
 .Form{
     margin-bottom: 5vh;
+}
+
+input{
+    border: 0;
+    background: none;
+    text-align: center;
+    border: 2px solid #4e73df;
+    padding: 10px 10px;
+    width: 250px;
+    outline: none;
+    color: black;
+    border-radius: 24px;
+    transition: 0.25s
 }
 
 .home-background{

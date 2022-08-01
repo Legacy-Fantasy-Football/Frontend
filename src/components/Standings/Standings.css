@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    overflow: scroll;
 }
 
 .year{
@@ -13,6 +12,7 @@
 .standingsTable{
     display: flex;
     justify-content: center;
+    overflow: scroll;
 }
 
 .standingsTable table {

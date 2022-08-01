@@ -80,7 +80,7 @@ export default function Standings({standings}){
         ))}</div>
         {yearstandings ? (
         <div className="standingsTable">
-        <table>
+        <table className="table table-striped">
             <thead>
             <tr>
             <th>Owner</th>
@@ -99,7 +99,7 @@ export default function Standings({standings}){
         </tbody>
       </table> </div>):( 
       <div className="standingsTable">
-        <table>
+        <table className="table table-striped">
             <thead>
             <tr>
             <th>Owner</th>

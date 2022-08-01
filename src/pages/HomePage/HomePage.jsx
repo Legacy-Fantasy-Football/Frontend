@@ -74,7 +74,9 @@ export default function Home({base_url, allLeagues, setAllLeagues, getallleagues
       .catch((err) =>{})
   }
 
-  function setCreateFunc(){
+  function setCreateFunc(e){
+    e.preventDefault()
+    console.log("i was clicked")
     setCreate(true)
   }
 
@@ -122,9 +124,9 @@ export default function Home({base_url, allLeagues, setAllLeagues, getallleagues
             <></>
           ))}
           </div>
-        <Button onClick={setCreateFunc} className="mt-2 mb-5 create-league large-btn" variant="primary" size="lg">
-            Create League
-        </Button>
+          <form onSubmit={setCreateFunc}>
+            <input type="submit" value="Create League" />
+          </form>
         </div>
       </div>
 

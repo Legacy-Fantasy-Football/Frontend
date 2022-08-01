@@ -58,7 +58,7 @@ export default function TrophyRoom({ leagueData}) {
 
   return (
     <>
-      <table>
+      <table className="table table-striped">
         <thead>
         <tr>
           <th>Owner</th>
