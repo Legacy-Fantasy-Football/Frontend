@@ -60,7 +60,7 @@ export default function Home({base_url, allLeagues, setAllLeagues, getallleagues
     setDisplaySpinner("true")
     e.preventDefault();
     //console.log(`newLeagueHost: ${newLeague.host}`)
-    axios.post(`${base_url}/wel/`, {
+    axios.post(`https://legacyfantasyfootballbackend.herokuapp.com/wel/`, {
         user: user.user_id,
         host: newHost,
         year_started: startYear,
@@ -69,7 +69,7 @@ export default function Home({base_url, allLeagues, setAllLeagues, getallleagues
         Espn_Swid: newEspn_Swid
       })
       .then((res) =>{
-        Navigate(`/home/${newLeagueId}`)
+        Navigate(`/home/${newLeagueId}/`)
       })
       .catch((err) =>{})
   }
@@ -86,7 +86,7 @@ export default function Home({base_url, allLeagues, setAllLeagues, getallleagues
 
   function goToLeague(e){
     e.preventDefault()
-    Navigate(`/home/${search}`)
+    Navigate(`/home/${search}/`)
   }
 
   useEffect(()=>{
