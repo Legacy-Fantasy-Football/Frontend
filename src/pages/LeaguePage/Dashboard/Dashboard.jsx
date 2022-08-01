@@ -7,7 +7,7 @@ import Chart from "../../Chart/Chart"
 import BarChart from "../../Chart/BarChart"
 import { useState, useEffect, useContext } from "react";
 import LegacyPoints from "../../../components/LegacyPoints/LegacyPoints";
-import TrophyRoom from "../../../components/TrophyRoom";
+import TrophyRoom from "../../../components/TrophyRoom/TrophyRoom";
 import Standings from "../../../components/Standings/Standings";
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
