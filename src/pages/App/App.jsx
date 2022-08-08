@@ -16,7 +16,7 @@ import axios from "axios"
 export default function App(){
 
     // const base_url = "https://legacyfantasyfootballbackend.herokuapp.com"
-    const base_url = "http://localhost:8000"
+    const base_url = "https://legacyfantasyfootballbackend.herokuapp.com"
     const [allLeagues, setAllLeagues] = useState([])
     // const { user, logoutUser } = useContext(AuthContext);
    
