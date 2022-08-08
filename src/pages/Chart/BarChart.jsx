@@ -15,7 +15,7 @@ export default class BarChart extends Component {
             zoomEnabled: true,
             zoomType: "xy",
             axisX:{
-                interval: 1,
+                interval: 3,
               },
 			data: [
 			{

@@ -4,6 +4,7 @@ import "./Standings.css"
 export default function Standings({standings}){
     const[yearstandings, setYearStandings] = useState([])
     const[lastyearstandings, setLastYearStandings] = useState([])
+    const [isActive, setIsActive] = useState(false);
 
     let standingsArr = []
     let thisyear = []
@@ -48,6 +49,7 @@ export default function Standings({standings}){
         console.log(lastyearsorted)
         
     function getyear(e){
+        console.log(e.target.id);
        let year = e.target.innerHTML
        console.log(year)
         // thisyear = []
@@ -76,7 +78,9 @@ export default function Standings({standings}){
     return(
         <>
         <div className="yearrow">{standingsArr.map((year, id)=>(
-            <h3 className="year" onClick={getyear}>{year.year}</h3>
+            <h3 style={{
+                color: isActive === id ? "red" : ""
+              }} className="year" onClick={getyear}>{year.year}</h3>
         ))}</div>
         {yearstandings ? (
         <div className="standingsTable">

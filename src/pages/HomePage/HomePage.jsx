@@ -60,7 +60,7 @@ export default function Home({base_url, allLeagues, setAllLeagues, getallleagues
     setDisplaySpinner("true")
     e.preventDefault();
     //console.log(`newLeagueHost: ${newLeague.host}`)
-    axios.post(`https://legacyfantasyfootballbackend.herokuapp.com/wel/`, {
+    axios.post(`${base_url}/wel/`, {
         user: user.user_id,
         host: newHost,
         year_started: startYear,

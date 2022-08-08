@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import "./TrophyRoom.css"
 
 export default function TrophyRoom({ leagueData}) {
   console.log(leagueData);
@@ -58,7 +59,7 @@ export default function TrophyRoom({ leagueData}) {
 
   return (
     <>
-      <table className="table table-striped">
+      <table className="trophy-table table-striped">
         <thead>
         <tr>
           <th>Owner</th>
