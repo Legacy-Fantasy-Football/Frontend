@@ -4,7 +4,7 @@ import "./Standings.css"
 export default function Standings({standings, lastyearstandings}){
     const[yearstandings, setYearStandings] = useState([])
     const[showpastyear, setShowPastYear] = useState(false)
-    const [isActive, setIsActive] = useState(false);
+    const[showingyear, setShowingYear] = useState("2021")
 
     let standingsArr = []
     let thisyear = []
@@ -53,6 +53,7 @@ export default function Standings({standings, lastyearstandings}){
        let year = e.target.innerHTML
        console.log(year)
        setShowPastYear(true)
+       setShowingYear(year)
         // thisyear = []
         thisyear = []
         for(const standing of standingsArr){
@@ -79,7 +80,15 @@ export default function Standings({standings, lastyearstandings}){
     return(
         <>
         <div className="yearrow">{standingsArr.map((year, id)=>(
-            <h3 className="year" onClick={getyear}>{year.year}</h3>
+            <>
+            {year.year === showingyear ? (
+                <h3 className="year clicked" onClick={getyear}>{year.year}</h3>
+            ) : (
+                <h3 className="year" onClick={getyear}>{year.year}</h3>
+            )
+
+            }
+            </>
         ))}</div>
 
         
