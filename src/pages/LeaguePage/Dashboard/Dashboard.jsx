@@ -25,6 +25,7 @@ export default function Dashboard({getallleagues,base_url, allLeagues}){
     const [leagueData, setLeagueData] = useState([])
     const [leagueName, setLeagueName] = useState("")
     const [standings, setStandings] = useState([])
+    const [lastyearstandings,setLastYearStandings] = useState([])
     const { user, logoutUser } = useContext(AuthContext);
     console.log(leagueData)
     let { Espn_League_Id } = useParams();
@@ -71,11 +72,13 @@ export default function Dashboard({getallleagues,base_url, allLeagues}){
         axios.get(`${base_url}/wel/${id}`)
         .then(res => {
             data = res.data;
-            console.log(data.standings)
             // data.standings.forEach((d)=>{
             //     standingsarr.push(d)
             // })
-            standingsarr = data.standings
+            let sortedlastyear = data.standings[2021].sort(
+                ({ wins: a }, { wins: b }) => b - a
+            )
+            setLastYearStandings(sortedlastyear)
             setStandings(data.standings)
             setLeagueName(data.host)
             setLeagueData(data.bigdata)
@@ -83,7 +86,6 @@ export default function Dashboard({getallleagues,base_url, allLeagues}){
         .catch(err => {})
     }
 
-    console.log(standingsarr)
 
 
     const deleteLeague = async () =>{
@@ -315,7 +317,7 @@ export default function Dashboard({getallleagues,base_url, allLeagues}){
                                 {/* <!-- Card Body --> */}
                                 <div className="card-body chart">
                                     <div className="chart-scroll pb-2">
-                                    <Standings classNameName="linechart" standings={standings}></Standings>
+                                    <Standings classNameName="linechart" lastyearstandings={lastyearstandings} standings={standings}></Standings>
                                     </div>
                                 </div>
                             </div>

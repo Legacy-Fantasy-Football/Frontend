@@ -63,10 +63,10 @@ export default function TrophyRoom({ leagueData}) {
         <thead>
         <tr>
           <th>Owner</th>
-          <th onClick={sortByYear}>Years</th>
-          <th onClick={sortByPlayoffs}>Playoffs</th>
-          <th onClick={sortByFinals}>Finals</th>
-          <th onClick={sortByChamps}>Champs</th>
+          <th className="trophy-header" onClick={sortByYear}>Years</th>
+          <th className="trophy-header" onClick={sortByPlayoffs}>Playoffs</th>
+          <th className="trophy-header" onClick={sortByFinals}>Finals</th>
+          <th className="trophy-header" onClick={sortByChamps}>Champs</th>
         </tr>
         </thead>
         <tbody>

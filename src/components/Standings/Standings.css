@@ -9,6 +9,11 @@
     font-size: 25px;
 }
 
+.year:hover{
+    color: var(--green);
+    cursor: pointer;
+}
+
 .standingsTable{
     display: flex;
     justify-content: center;

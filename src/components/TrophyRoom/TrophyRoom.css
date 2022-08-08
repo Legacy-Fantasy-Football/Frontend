@@ -1,2 +1,4 @@
-.trophy-table{
+.trophy-header:hover{
+    color: var(--green);
+    cursor: pointer;
 }

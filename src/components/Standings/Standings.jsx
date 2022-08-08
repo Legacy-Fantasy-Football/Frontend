@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 import "./Standings.css"
 
-export default function Standings({standings}){
+export default function Standings({standings, lastyearstandings}){
     const[yearstandings, setYearStandings] = useState([])
-    const[lastyearstandings, setLastYearStandings] = useState([])
+    const[showpastyear, setShowPastYear] = useState(false)
     const [isActive, setIsActive] = useState(false);
 
     let standingsArr = []
@@ -52,6 +52,7 @@ export default function Standings({standings}){
         console.log(e.target.id);
        let year = e.target.innerHTML
        console.log(year)
+       setShowPastYear(true)
         // thisyear = []
         thisyear = []
         for(const standing of standingsArr){
@@ -78,10 +79,55 @@ export default function Standings({standings}){
     return(
         <>
         <div className="yearrow">{standingsArr.map((year, id)=>(
-            <h3 style={{
-                color: isActive === id ? "red" : ""
-              }} className="year" onClick={getyear}>{year.year}</h3>
+            <h3 className="year" onClick={getyear}>{year.year}</h3>
         ))}</div>
+
+        
+        {showpastyear === false ? (
+           <div className="standingsTable">
+           <table className="table table-striped">
+               <thead>
+               <tr>
+               <th>Owner</th>
+               <th>Wins</th>
+               <th>Losses</th>
+               </tr>
+               </thead>
+           <tbody>
+           {lastyearstandings.map((owner, id) =>(
+                <tr>
+                <td>{owner.owner}</td>
+                <td>{owner.wins}</td>
+                <td>{owner.losses}</td>
+              </tr>
+           ))}
+           </tbody>
+         </table> </div>
+        ):(
+            <div className="standingsTable">
+        <table className="table table-striped">
+            <thead>
+            <tr>
+            <th>Owner</th>
+            <th>Wins</th>
+            <th>Losses</th>
+            </tr>
+            </thead>
+        <tbody>
+        {yearstandings.map((owner, id) =>(
+             <tr>
+             <td>{owner.name}</td>
+             <td>{owner.wins}</td>
+             <td>{owner.losses}</td>
+           </tr>
+        ))}
+        </tbody>
+      </table> </div>
+        )
+        }
+
+
+{/* 
         {yearstandings ? (
         <div className="standingsTable">
         <table className="table table-striped">
@@ -106,7 +152,7 @@ export default function Standings({standings}){
         <table className="table table-striped">
             <thead>
             <tr>
-            <th>Owner</th>
+            <th>LOLOLOLOLOLOL</th>
             <th>Wins</th>
             <th>Losses</th>
             </tr>
@@ -120,7 +166,13 @@ export default function Standings({standings}){
            </tr>
         ))}
         </tbody>
-      </table> </div>)}
+      </table> </div>)
+      } */}
+
+
+
+
+
             </>
     )
 }
