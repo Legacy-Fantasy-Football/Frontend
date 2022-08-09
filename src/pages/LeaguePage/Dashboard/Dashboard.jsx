@@ -69,7 +69,7 @@ export default function Dashboard({getallleagues,base_url, allLeagues}){
     let standingsarr = []
     function getLeagueData(){
         let data
-        axios.get(`${base_url}/wel/${id}`)
+        axios.get(`${base_url}/newwel/${id}`)
         .then(res => {
             data = res.data;
             // data.standings.forEach((d)=>{
@@ -89,7 +89,7 @@ export default function Dashboard({getallleagues,base_url, allLeagues}){
 
 
     const deleteLeague = async () =>{
-        await axios.delete(`${base_url}/wel/${id}`)
+        await axios.delete(`${base_url}/newwel/${id}`)
         navigate('/')
     }
 
