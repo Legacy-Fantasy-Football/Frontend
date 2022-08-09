@@ -69,7 +69,7 @@ export default function Dashboard({getallleagues,base_url, allLeagues}){
     let standingsarr = []
     function getLeagueData(){
         let data
-        axios.get(`${base_url}/newwel/${id}`)
+        axios.get(`${base_url}/wel/${id}`)
         .then(res => {
             data = res.data;
             // data.standings.forEach((d)=>{
