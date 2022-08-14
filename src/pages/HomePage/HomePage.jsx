@@ -69,16 +69,36 @@ export default function Home({base_url, allLeagues, setAllLeagues, getallleagues
         Espn_Swid: newEspn_Swid
       })
       .then((res) =>{
-        for(let i = startYear; i <2022; i++){
-          console.log(i)
           let data
-          axios.get(`${base_url}/newwel/${newLeagueId}`)
+          axios.get(`${base_url}/newwel/${newLeagueId}/`)
           .then(res => {
               data = res.data;
               console.log(data)
-          })
+              for(let i = startYear; i < 2022; i++){
+                axios.put(`${base_url}/newwel/${newLeagueId}/`, {
+                  user: data.user,
+                  host: data.host,
+                  year_started: data.year_started,
+                  year: i,
+                  Espn_League_Id: data.Espn_League_Id,
+                  Espn_S2: data.Espn_S2,
+                  Espn_Swid: data.Espn_Swid,
+                  owners: data.owners,
+                  standings: data.standings,
+                  bigdata: data.bigdata
+                })
+                .then(res => {
+                  console.log(`ran put for year: ${i}`)
+                  axios.get(`${base_url}/newwel/${newLeagueId}/`)
+                  .then(res => {
+                    data = res.data;
+                    console.log(`data: ${data}`)
+                  })
+                  .catch(err => {})
+                })
+                .catch(err => {})
+            }})
           .catch(err => {})
-        }
       })
       .catch((err) =>{})
   }
