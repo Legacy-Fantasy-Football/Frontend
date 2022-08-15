@@ -11,6 +11,7 @@ import Chart from "../Chart/Chart"
 import BarChart from "../Chart/BarChart"
 import CreateLeague from "../../components/CreateLeague/CreateLeague"
 import Dashboard from "../LeaguePage/Dashboard/Dashboard"
+import AddYear from "../../components/AddYear.jsx/AddYear";
 import axios from "axios"
 
 export default function App(){
@@ -46,7 +47,7 @@ export default function App(){
             <Route path="/home/BarChart" element={<BarChart/>}></Route>
             <Route path="/home/createLeague" element={<CreateLeague base_url={base_url}/>}></Route>
             <Route path="/home/:Espn_League_Id/" element={<Dashboard getallleagues={getallleagues} base_url={base_url} allLeagues={allLeagues}/>}></Route>
-            
+            <Route path="/home/addYears/:Espn_League_Id/" element={<AddYear base_url={base_url}/>}></Route>
           </Routes>
         </AuthProvider>
         <Footer />
