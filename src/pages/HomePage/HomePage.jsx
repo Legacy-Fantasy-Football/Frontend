@@ -56,9 +56,12 @@ export default function Home({base_url, allLeagues, setAllLeagues, getallleagues
     setNewEspn_Swid(e.target.value)
   };
 
+
+
   function handleSubmit(e){
     setDisplaySpinner("true")
     e.preventDefault();
+    let data = {}
     //console.log(`newLeagueHost: ${newLeague.host}`)
     axios.post(`${base_url}/newwel/`, {
         user: user.user_id,
@@ -69,12 +72,12 @@ export default function Home({base_url, allLeagues, setAllLeagues, getallleagues
         Espn_Swid: newEspn_Swid
       })
       .then((res) =>{
-          let data
           axios.get(`${base_url}/newwel/${newLeagueId}/`)
-          .then(res => {
+          .then(res1 => {
+              console.log(res1.data)
               data = res.data;
-              console.log(data)
               for(let i = startYear; i < 2022; i++){
+                console.log(data.bigdata)
                 axios.put(`${base_url}/newwel/${newLeagueId}/`, {
                   user: data.user,
                   host: data.host,
@@ -87,12 +90,14 @@ export default function Home({base_url, allLeagues, setAllLeagues, getallleagues
                   standings: data.standings,
                   bigdata: data.bigdata
                 })
-                .then(res => {
+                .then(res2 => {
+                  console.log(res2.data)
                   console.log(`ran put for year: ${i}`)
                   axios.get(`${base_url}/newwel/${newLeagueId}/`)
-                  .then(res => {
+                  .then(res3 => {
+                    console.log(res3.data)
                     data = res.data;
-                    console.log(`data: ${data}`)
+                    console.log(data.bigdata)
                   })
                   .catch(err => {})
                 })
@@ -102,6 +107,9 @@ export default function Home({base_url, allLeagues, setAllLeagues, getallleagues
       })
       .catch((err) =>{})
   }
+
+
+
 
 
   // let y = 2009  
