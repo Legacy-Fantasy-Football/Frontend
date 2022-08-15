@@ -28,6 +28,7 @@ export default function Home({base_url, allLeagues, setAllLeagues, getallleagues
   const [startYear, SetStartYear] = useState("")
   const [create, setCreate] = useState()
   const [search, setSearch] = useState("")
+
   
   function getLeagues(){
     console.log("it mounted")
@@ -55,12 +56,16 @@ export default function Home({base_url, allLeagues, setAllLeagues, getallleagues
   function handleEspn_SwidInput(e){
     setNewEspn_Swid(e.target.value)
   };
+  
+
+
 
   function handleSubmit(e){
     setDisplaySpinner("true")
     e.preventDefault();
+    let data = {}
     //console.log(`newLeagueHost: ${newLeague.host}`)
-    axios.post(`${base_url}/wel/`, {
+    axios.post(`${base_url}/newwel/`, {
         user: user.user_id,
         host: newHost,
         year_started: startYear,
@@ -69,10 +74,104 @@ export default function Home({base_url, allLeagues, setAllLeagues, getallleagues
         Espn_Swid: newEspn_Swid
       })
       .then((res) =>{
-        Navigate(`/home/${newLeagueId}/`)
+          axios.get(`${base_url}/newwel/${newLeagueId}/`)
+          .then(res1 => {
+              console.log(res1.data)
+              data = res.data;
+                console.log(data.bigdata)
+                axios.put(`${base_url}/newwel/${newLeagueId}/`, {
+                  user: user.user_id,
+                  host: newHost,
+                  year: startYear,
+                  year_started: startYear,
+                  Espn_League_Id: data.Espn_League_Id,
+                  Espn_S2: data.Espn_S2,
+                  Espn_Swid: data.Espn_Swid,
+                  owners: data.owners,
+                  standings: data.standings,
+                  bigdata: data.bigdata
+                })
+                .then(res2 => {
+                  console.log(res2.data)
+                  setDisplaySpinner("false")
+                  Navigate(`/home/addYears/${newLeagueId}`)
+                  console.log(`ran put for year: ${startYear}`)
+                })
+                .catch(err => {})
+            })
+          .catch(err => {})
       })
       .catch((err) =>{})
   }
+
+
+
+
+  // function handleSubmit(e){
+  //   setDisplaySpinner("true")
+  //   e.preventDefault();
+  //   let data = {}
+  //   //console.log(`newLeagueHost: ${newLeague.host}`)
+  //   axios.post(`${base_url}/newwel/`, {
+  //       user: user.user_id,
+  //       host: newHost,
+  //       year_started: startYear,
+  //       Espn_League_Id: newLeagueId,
+  //       Espn_S2: newEspn_S2,
+  //       Espn_Swid: newEspn_Swid
+  //     })
+  //     .then((res) =>{
+  //         axios.get(`${base_url}/newwel/${newLeagueId}/`)
+  //         .then(res1 => {
+  //             console.log(res1.data)
+  //             data = res.data;
+  //             for(let i = startYear; i < 2022; i++){
+  //               console.log(data.bigdata)
+  //               axios.put(`${base_url}/newwel/${newLeagueId}/`, {
+  //                 user: data.user,
+  //                 host: data.host,
+  //                 year_started: data.year_started,
+  //                 year: i,
+  //                 Espn_League_Id: data.Espn_League_Id,
+  //                 Espn_S2: data.Espn_S2,
+  //                 Espn_Swid: data.Espn_Swid,
+  //                 owners: data.owners,
+  //                 standings: data.standings,
+  //                 bigdata: data.bigdata
+  //               })
+  //               .then(res2 => {
+  //                 console.log(res2.data)
+  //                 console.log(`ran put for year: ${i}`)
+  //                 axios.get(`${base_url}/newwel/${newLeagueId}/`)
+  //                 .then(res3 => {
+  //                   console.log(res3.data)
+  //                   data = res.data;
+  //                   console.log(data.bigdata)
+  //                 })
+  //                 .catch(err => {})
+  //               })
+  //               .catch(err => {})
+  //           }})
+  //         .catch(err => {})
+  //     })
+  //     .catch((err) =>{})
+  // }
+
+
+
+
+
+  // let y = 2009  
+  //       while(y < 2022){
+  //         axios.put(`${base_url}/newwel/${newLeagueId}/`, {
+  //           year: y,
+  //         })
+  //         .then((res) =>{
+  //           console.log("we put")
+  //         })
+  //         .catch((err) =>{})
+  //         y = y + 1 
+  //       }  
 
   function setCreateFunc(e){
     e.preventDefault()
@@ -99,10 +198,11 @@ export default function Home({base_url, allLeagues, setAllLeagues, getallleagues
     {create ? ( 
 
 
-
+    <>
     <div>
       <CreateLeague setCreate={setCreate} displaySpinner={displaySpinner} handleSubmit={handleSubmit} handleHostInput={handleHostInput} newHost={newHost} startYear={startYear} handleStartYearInput={handleStartYearInput} newLeagueId={newLeagueId} handleLeagueIdInput={handleLeagueIdInput} newEspn_S2={newEspn_S2} handleEspn_S2Input={handleEspn_S2Input} newEspn_Swid={newEspn_Swid} handleEspn_SwidInput={handleEspn_SwidInput} ></CreateLeague>
     </div>
+    </>
     ) : (
       <div className="home-background">
         <div className="home-box">
