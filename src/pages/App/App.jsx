@@ -35,7 +35,7 @@ export default function App(){
 
     return(
       <Router>
-        <div className="flex flex-col min-h-screen overflow-hidden">
+        <div className="flex app-cont flex-col min-h-screen overflow-hidden">
         <AuthProvider>
       
           <Routes>

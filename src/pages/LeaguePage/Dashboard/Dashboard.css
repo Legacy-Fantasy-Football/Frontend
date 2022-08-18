@@ -11297,3 +11297,7 @@ body.sidebar-toggled footer.sticky-footer {
 .sidebar-content{
   color: white;
 }
+
+.dash-cont{
+  width: 100vw;
+}

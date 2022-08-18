@@ -1,6 +1,6 @@
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
-import "../CreateLeague/CreateLeague.css"
+import "./AddYear.css"
 import Spinner from 'react-bootstrap/Spinner';
 import { useParams } from "react-router-dom"
 import { useNavigate } from "react-router-dom";

@@ -110,7 +110,7 @@ export default function Dashboard({getallleagues,base_url, allLeagues}){
     
     return(
         // <!-- Page Wrapper -->
-    <div id="wrapper">
+    <div className = "dash-cont" id="wrapper">
 
         <Sidebar getallleagues={getallleagues} allLeagues={allLeagues} user={user}></Sidebar>
         {/* <!-- Content Wrapper --> */}
